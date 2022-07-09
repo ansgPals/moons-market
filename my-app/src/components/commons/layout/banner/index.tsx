@@ -12,7 +12,6 @@ const Wrapper = styled.div`
   display: flex;
   position: sticky;
   min-width: 800px;
-
   ${(props: IButtonProps) =>
     props.scrollY > 36 && { position: "fixed", top: 0 }}
   flex-direction: row;
@@ -30,6 +29,7 @@ const Title = styled.div`
   font-weight: 900;
   margin-left: 20px;
   font-family: "SUIT900";
+  cursor: pointer;
 `;
 const PositionRow = styled.div`
   display: flex;
@@ -62,11 +62,13 @@ export default function LayOutBanner() {
     pick[menuIndex] = true;
     setPickArr(pick);
   };
-
+  const onClickTitle = () => {
+    router.push("/");
+  };
   return (
     <>
       <Wrapper scrollY={scrollY}>
-        <Title>MOONSMARKET</Title>
+        <Title onClick={onClickTitle}>MOONSMARKET</Title>
         <PositionRow>
           <Menu onClick={onClickMenu(0)} isPicked={pickArr[0]}>
             HOME

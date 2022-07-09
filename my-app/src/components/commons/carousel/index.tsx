@@ -4,109 +4,100 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import NextArrow from "./NextArrow";
 import PrevArrow from "./PrevArrow";
-import { useState } from "react";
+
 const ReactSlick = styled(Slider)`
   width: 100vw;
-  min-width: 80rem;
-  height: 50.666rem;
-`;
-const BackGround = styled.div`
-  background-color: green;
-`;
-const PositionRow = styled.div`
+  min-width: 90rem;
+  height: 51rem;
+  margin-top: 2rem;
+  margin-bottom: 10rem;
   display: flex;
   flex-direction: row;
-  height: fit-content;
   align-items: center;
-  position: absolute;
-  z-index: 10;
-  margin-top: 46.1333rem;
-  margin-left: 24.9333rem;
+  justify-content: center;
 `;
-const PageNumBox = styled.div`
-  width: 3.666rem;
-  height: 1.8666;
-  background-color: rgba(0, 0, 0, 0.3);
-  border-radius: 0.9333rem;
-`;
-const PageNum = styled.div`
-  font-size: 1rem;
-  color: white;
-  text-align: center;
-  line-height: 1.8666;
-`;
+
 interface IBackProps {
   backImage?: string;
   level?: string;
 }
-const SlickPage = styled.div`
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url(${(props: IBackProps) => props.backImage});
-  width: 100%;
+const DetailBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 50rem;
+  height: 51rem;
+
+  margin-left: 10rem;
+  justify-content: space-between;
+  align-items: center;
+`;
+const SlickWrapper = styled.div`
   min-width: 80rem;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+`;
+const ProductImage = styled.div`
+  background-image: ${(props: IBackProps) =>
+    `url(https://storage.googleapis.com/${props.backImage})`};
+  width: 50rem;
+  min-width: 50rem;
   height: 50.666rem;
   background-size: cover;
+  background-repeat: no-repeat;
 `;
 const Title = styled.div`
-  width: fit-content;
-  margin-top: 1.333rem;
-  margin-left: 24rem;
-  color: white;
-  font-size: 2.666rem;
+  margin-top: 10rem;
+  width: 50rem;
+  border-bottom: 1px solid #7050c7;
+  text-align: center;
+  color: black;
+  font-size: 4rem;
   margin-bottom: 1.6rem;
 `;
 const SubTitle = styled.div`
-  margin-left: 24rem;
-  color: white;
-  font-size: 1.666rem;
-  width: 21.9333rem;
-`;
-const PauseButton = styled.div`
-  height: 1.8666;
-  width: 1.7333rem;
-  background-color: rgba(0, 0, 0, 0.3);
-  color: white;
-  text-align: center;
-  line-height: 2rem;
-  margin-left: 3.4rem;
-  cursor: pointer;
+  max-width: 50rem;
+  color: black;
+  font-size: 2.5rem;
 `;
 
-const Level = styled.div`
-  width: 3.6rem;
-  height: 2rem;
-  background-color: ${(props: IBackProps) =>
-    props.level === "초급"
-      ? "#A76EFF"
-      : props.level === "중급"
-      ? "#6400FF"
-      : props.level === "입문"
-      ? "#ffe000"
-      : "black"};
-  border-radius: 0.333rem;
+const DetailButton = styled.button`
+  width: 50rem;
+  height: 8rem;
+  cursor: pointer;
+  background: black;
+  border-radius: 1rem;
+  border: none;
   color: white;
-  line-height: 2rem;
-  text-align: center;
-  margin-top: 18.866rem;
-  margin-left: 24rem;
+  font-family: "SUIT700";
+  font-size: 2.5rem;
+  margin-bottom: 4rem;
+  :hover {
+    background-color: #7050c7;
+  }
 `;
 
 export default function WaitingCardSlider({
   data,
 }: {
   data: Array<{
-    img: string;
-    title: string;
-    subTitle: string;
-    level: string;
+    contents?: string;
+    createdAt?: string;
+    deletedAt?: null;
+    images?: string[];
+    name?: string;
+    pickedCount?: number;
+    price?: number;
+    remarks?: string;
+    soldAt?: null;
+    tags?: string[];
+    updatedAt?: string;
+    __typename?: string;
+    _id?: string;
   }>;
 }) {
-  const [pageNum, setPageNum] = useState(1);
-  const [playCarousel, setPlayCarousel] = useState<boolean>(true);
-  const onClickPlayCarousel = () => {
-    setPlayCarousel((prev) => !prev);
-  };
-
   const settings = {
     centerMode: false,
     dots: false,
@@ -114,35 +105,42 @@ export default function WaitingCardSlider({
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: true,
-    autoplaySpeed: playCarousel ? 5000 : 600000,
+    autoplaySpeed: 5000,
+
     autoplay: true,
     prevArrow: <PrevArrow />,
     nextArrow: <NextArrow />,
-    afterChange: (pageNum: number) => setPageNum(pageNum + 1),
   };
 
   return (
-    <BackGround>
-      <PositionRow>
+    <div>
+      {/* <PositionRow>
         <PageNumBox>
           <PageNum>
-            {pageNum} / {data.length}
+            {pageNum} / {data?.length}
           </PageNum>
         </PageNumBox>
         <PauseButton onClick={onClickPlayCarousel}>| |</PauseButton>
-      </PositionRow>
+      </PositionRow> */}
       <ReactSlick {...settings}>
-        {data.map((el, i) => (
-          <SlickPage key={i} backImage={el.img}>
-            <div>
-              {" "}
-              <Level>{el.level}</Level>
-              <Title>{el.title}</Title>
-              <SubTitle>{el.subTitle}</SubTitle>
-            </div>
-          </SlickPage>
+        {data?.map((el, i) => (
+          <div key={i}>
+            {/* <SlickPage> */}
+            <SlickWrapper>
+              <ProductImage backImage={el.images[0]}></ProductImage>
+              <DetailBox>
+                {" "}
+                <div>
+                  <Title>{el.name}</Title>
+                  <SubTitle>{el.remarks}</SubTitle>
+                </div>
+                <DetailButton>더 알아보기</DetailButton>
+              </DetailBox>
+            </SlickWrapper>
+            {/* </SlickPage> */}
+          </div>
         ))}
       </ReactSlick>
-    </BackGround>
+    </div>
   );
 }

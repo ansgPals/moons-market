@@ -1,12 +1,15 @@
+import { gql, useQuery } from "@apollo/client";
 import styled from "@emotion/styled";
 import { useScroll } from "../src/commons/library/scrollHook";
+import { IQuery } from "../src/commons/types/generated/types";
 import MainCarousel from "../src/components/commons/carousel";
+import TopButtonPage from "../src/components/commons/topButton";
 
 const MainTitleBox = styled.div`
   background-image: url("/main/purple.png");
   width: 100vw;
   min-width: 800px;
-  height: 70rem;
+  height: 20rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,7 +25,7 @@ const MainCenterBox = styled.div`
   justify-content: center;
 `;
 const Title = styled.div`
-  font-size: 7rem;
+  font-size: 3rem;
   color: white;
   font-weight: bolder;
   font-style: italic;
@@ -80,11 +83,8 @@ const MainCenterImg = styled.div`
   }
 `;
 const SubTitle = styled.div`
-  margin-top: 30rem;
   font-size: 4rem;
-  margin-left: 2rem;
   font-family: "SUIT700";
-  margin-bottom: 3rem;
 `;
 const HoverBox = styled.div`
   position: absolute;
@@ -92,7 +92,6 @@ const HoverBox = styled.div`
   width: 100vw;
   min-width: 80rem;
   height: 60rem;
-
   z-index: 2;
   color: white;
   background-color: rgba(0, 0, 0, 0.6);
@@ -107,6 +106,11 @@ const GoCommunity = styled.button`
   font-family: "SUIT600";
   background-color: transparent;
   border: none;
+`;
+const PositionRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 `;
 const carouselData = [
   {
@@ -128,19 +132,58 @@ const carouselData = [
     subTitle: "내 손으로 자연의 잔디를 만들어 보세요.",
   },
 ];
+export const FETCH_USED_ITEM_OF_THE_BEST = gql`
+  query fetchUseditemsOfTheBest {
+    fetchUseditemsOfTheBest {
+      _id
+      name
+      remarks
+      contents
+      price
+      tags
+      images
+      pickedCount
+      soldAt
+      createdAt
+      updatedAt
+      deletedAt
+    }
+  }
+`;
 export default function MoonsMarketMainPage() {
+  const { data } = useQuery<Pick<IQuery, "fetchUseditemsOfTheBest">>(
+    FETCH_USED_ITEM_OF_THE_BEST
+  );
+
   const { scrollY } = useScroll();
-  console.log(scrollY);
+
   return (
     <div>
+      <TopButtonPage />
       <MainTitleBox>
         <Title>리셀의 문을 열다</Title>
         <Title>MOONSMARKET</Title>
       </MainTitleBox>
-      <SubTitle>TODAY HOT DILL</SubTitle>
-      <MainCarousel data={carouselData} />
+      <PositionRow style={{ marginTop: "10rem" }}>
+        <SubTitle style={{ marginLeft: "4rem", marginRight: "1rem" }}>
+          TODAY
+        </SubTitle>
+        <SubTitle style={{ color: "#7050c7", marginRight: "1rem" }}>
+          HOT
+        </SubTitle>
+        <SubTitle>DILL</SubTitle>
+      </PositionRow>
+      <MainCarousel data={data?.fetchUseditemsOfTheBest} />
       <MainCenterBox>
-        <SubTitle>BLOG WHITH MAGAGINE</SubTitle>
+        <SubTitle
+          style={{
+            marginLeft: "4rem",
+            marginTop: "10rem",
+            marginBottom: "2rem",
+          }}
+        >
+          BLOG WHITH MAGAGINE
+        </SubTitle>
         <MainCenterImgBox scrollY={scrollY}>
           <MainCenterImg>
             <HoverBox>
