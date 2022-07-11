@@ -10,10 +10,10 @@ import LayOutBanner from "./banner";
 const Body = styled.div`
   width: 100vw;
   display: flex;
-  /* min-height: 800px; */
+
   flex-direction: column;
   justify-content: flex-start;
-
+  padding-top: 90px;
   align-items: center;
 `;
 
@@ -35,11 +35,11 @@ export default function LayOut(props: ILayoutProps) {
   const isMyPage = MY_PAGE.includes(router.asPath);
   const isLending = LENDING_PAGE.includes(router.asPath);
   return (
-    <div>
+    <>
       <LayOutHeader />
       <LayOutBanner />
       <Body>{props.children}</Body>
       <LayOutFooter />
-    </div>
+    </>
   );
 }

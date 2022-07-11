@@ -3,19 +3,12 @@ import { IQuery } from "../../../../commons/types/generated/types";
 
 //UI
 export interface IBoardListUIProps {
-  onClickGoBoard: (event: MouseEvent<HTMLButtonElement>) => void;
+  onClickGoBoard: (id: string) => () => void;
   GoWriteBoard: () => void;
   data?: Pick<IQuery, "fetchBoards">;
-  fetchBoardsCount?: Pick<IQuery, "fetchBoardsCount">;
-  onClickPageNumber: (event: MouseEvent<HTMLButtonElement>) => void;
-  onClickNextPage: () => void;
-  onClickPrevPage: () => void;
-  startPage: number;
-  lastPage: number;
-  pickPage: number;
   keyWord: string;
-  onchangeSearch: (event: ChangeEvent<HTMLInputElement>) => void;
-  inputRef: any;
+  onChangeSearch: (event: ChangeEvent<HTMLInputElement>) => void;
+  onLoadMore: () => void;
 }
 //컨테이너
 export interface IBoardList {

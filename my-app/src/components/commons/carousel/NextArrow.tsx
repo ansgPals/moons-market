@@ -13,7 +13,6 @@ const Next = styled.div`
   font-size: 5rem;
   line-height: 8rem;
   text-align: center;
-  margin-left: 125rem;
   z-index: 2;
   color: white;
   cursor: pointer;
@@ -21,6 +20,9 @@ const Next = styled.div`
   :hover {
     background-color: rgba(159, 63, 255, 0.3);
   }
+  margin-top: -18%;
+
+  margin-left: 84%;
 `;
 export default function NextArrow({ style, onClick }: NextArrowProps) {
   return <Next onClick={onClick}>{">"}</Next>;

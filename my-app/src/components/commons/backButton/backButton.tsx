@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
 
 const BackButton = styled.button`
-  width: 3.8rem;
-  height: 3.866rem;
+  width: 8rem;
+  height: 8rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,17 +13,16 @@ const BackButton = styled.button`
   box-shadow: 0.2666rem 0.2666rem 1.9333rem rgba(0, 0, 0, 0.25);
   border-radius: 1.933rem;
   position: absolute;
-  margin-top: 3.333rem;
-  margin-bottom: 3.333rem;
-  margin-right: 75rem;
+  z-index: 2;
+  margin-left: -100rem;
 `;
 const Arrow = styled.div`
   margin-top: 0.2rem;
-  background-image: url("/main/blackArrow.png");
+  background-image: url("/backArrow.png");
   background-size: contain;
   background-repeat: no-repeat;
-  height: 1.8rem;
-  width: 1.7rem;
+  height: 3rem;
+  width: 3rem;
 `;
 
 export default function BackButtonComponent() {

@@ -6,15 +6,17 @@ import { accessTokenState } from "../../../../commons/store";
 import { IMutation } from "../../../../commons/types/generated/types";
 
 const Wrapper = styled.div`
+  position: fixed;
   height: 30px;
   width: 100vw;
   display: flex;
-
+  background-color: white;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-end;
   min-width: 800px;
   border-bottom: #c7c7c7 1px solid;
+  z-index: 100;
 `;
 
 const PositionRow = styled.div`
@@ -63,6 +65,7 @@ export default function LayOutHeader() {
     const result = await logoutUser();
     console.log(result);
   };
+
   return (
     <Wrapper>
       {!accessToken ? (

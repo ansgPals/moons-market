@@ -1,20 +1,14 @@
 import styled from "@emotion/styled";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import NextArrow from "./NextArrow";
 import PrevArrow from "./PrevArrow";
+import Slider from "react-slick";
 
 const ReactSlick = styled(Slider)`
-  width: 100vw;
-  min-width: 90rem;
+  width: 170rem;
   height: 51rem;
+  min-width: 80rem;
   margin-top: 2rem;
   margin-bottom: 10rem;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
 `;
 
 interface IBackProps {
@@ -26,22 +20,21 @@ const DetailBox = styled.div`
   flex-direction: column;
   width: 50rem;
   height: 51rem;
-
   margin-left: 10rem;
   justify-content: space-between;
   align-items: center;
 `;
 const SlickWrapper = styled.div`
-  min-width: 80rem;
-  width: 100vw;
   display: flex;
+  min-width: 80rem;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
 `;
 const ProductImage = styled.div`
   background-image: ${(props: IBackProps) =>
     `url(https://storage.googleapis.com/${props.backImage})`};
+  background-color: red;
   width: 50rem;
   min-width: 50rem;
   height: 50.666rem;
@@ -106,38 +99,26 @@ export default function WaitingCardSlider({
     slidesToScroll: 1,
     arrows: true,
     autoplaySpeed: 5000,
-
-    autoplay: true,
+    autoplay: false,
     prevArrow: <PrevArrow />,
     nextArrow: <NextArrow />,
   };
 
   return (
     <div>
-      {/* <PositionRow>
-        <PageNumBox>
-          <PageNum>
-            {pageNum} / {data?.length}
-          </PageNum>
-        </PageNumBox>
-        <PauseButton onClick={onClickPlayCarousel}>| |</PauseButton>
-      </PositionRow> */}
       <ReactSlick {...settings}>
         {data?.map((el, i) => (
           <div key={i}>
-            {/* <SlickPage> */}
             <SlickWrapper>
-              <ProductImage backImage={el.images[0]}></ProductImage>
+              <ProductImage backImage={el?.images?.[0]}></ProductImage>
               <DetailBox>
-                {" "}
                 <div>
-                  <Title>{el.name}</Title>
-                  <SubTitle>{el.remarks}</SubTitle>
+                  <Title>{el?.name}</Title>
+                  <SubTitle>{el?.remarks}</SubTitle>
                 </div>
                 <DetailButton>더 알아보기</DetailButton>
               </DetailBox>
             </SlickWrapper>
-            {/* </SlickPage> */}
           </div>
         ))}
       </ReactSlick>
