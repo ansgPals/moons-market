@@ -3,19 +3,20 @@ import styled from "@emotion/styled";
 export const Wrapper = styled.div`
   width: 23rem;
   height: fit-content;
-
   border-radius: 1rem;
-  margin-top: 3rem;
+  margin-top: 5rem;
   margin-right: 3rem;
-  border-radius: 10px 8px 10px 10px;
+  border-radius: 1rem;
   cursor: pointer;
+  box-shadow: 0px 4px 10px rgba(23, 0, 58, 0.1);
   :hover {
-    box-shadow: 0px 4px 10px rgba(23, 0, 58, 0.1);
+    box-shadow: none;
   }
 `;
 export const StyleImg = styled.img`
   object-fit: contain;
   width: 23rem;
+  border-radius: 1rem 1rem 0rem 0rem;
 `;
 export const PositionRow = styled.div`
   display: flex;

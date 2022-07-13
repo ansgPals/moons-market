@@ -15,7 +15,7 @@ export const BackGround = styled.div`
   flex-direction: column;
   width: 80rem;
   border-radius: 1rem;
-  border: 2px solid #bdbdbd;
+  border: 2px solid #ddd;
 `;
 export const WriterButton = styled.button`
   font-size: 2rem;
@@ -58,6 +58,11 @@ export const MainImg = styled.img`
   object-fit: contain;
   width: 70rem;
   margin: 5rem;
+`;
+export const Contents = styled.div`
+  width: 70rem;
+  margin: 5rem;
+  font-size: 2rem;
 `;
 export const PositionRow = styled.div`
   display: flex;

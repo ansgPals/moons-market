@@ -1,3 +1,4 @@
+import { red } from "@mui/material/colors";
 import * as S from "./sign-up.styles";
 import { ISignUpPropsUI } from "./sign-up.types";
 
@@ -15,9 +16,8 @@ export default function SignUpPresenter(props: ISignUpPropsUI) {
               type="text"
               inner={props.watchFields.email}
               error={props.formState.errors.email?.message}
-              ref={props.inputRef}
               {...props.register("email")}
-            ></S.LoginInput>{" "}
+            ></S.LoginInput>
           </S.JustBox>
           <S.InputErr>{props.formState.errors.email?.message}</S.InputErr>
 

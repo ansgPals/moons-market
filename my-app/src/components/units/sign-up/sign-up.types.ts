@@ -10,7 +10,6 @@ export interface IButtonProps {
   isActive: boolean;
 }
 export interface ISignUpPropsUI {
-  inputRef: any;
   onClickSignUp: (data: any) => Promise<void>;
   register: UseFormRegister<FieldValues>;
   formState: FormState<FieldValues>;

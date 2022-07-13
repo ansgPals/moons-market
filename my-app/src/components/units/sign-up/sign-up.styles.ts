@@ -51,7 +51,7 @@ export const Button = styled.button`
   background-color: ${(props: IInputProps) =>
     props.isActive ? "#6400ff" : "#bdbdbd"};
   margin-bottom: 15px;
-  margin-left: auto;
+  margin-left: 40px;
 `;
 export const PositionRow = styled.div`
   display: flex;

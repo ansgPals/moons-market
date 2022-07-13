@@ -2,10 +2,12 @@ import * as S from "./board-detail.styles";
 import BackButtonComponent from "../../../commons/backButton/backButton";
 import { getTimeForTodayDate } from "../../../../commons/library/utils";
 import { IBoardDetailUIProps } from "./board-detail.types";
+import TopButtonPage from "../../../commons/topButton";
 
 export default function BoardDetailUI(props: IBoardDetailUIProps) {
   return (
     <S.Wrapper>
+      <TopButtonPage />
       <BackButtonComponent />
       <S.PositionRow style={{ marginBottom: "2rem" }}>
         <S.WriterButton
@@ -39,6 +41,8 @@ export default function BoardDetailUI(props: IBoardDetailUIProps) {
               : "/defaultProfileImg.png"
           }
         ></S.MainImg>
+        <S.Contents>{props.data?.fetchBoard?.contents}</S.Contents>
+
         <S.PositionRow
           style={{ padding: " 2rem 5rem", borderBottom: "1px solid #c4c4c4" }}
         >

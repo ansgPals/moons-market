@@ -34,7 +34,7 @@ const SlickWrapper = styled.div`
 const ProductImage = styled.div`
   background-image: ${(props: IBackProps) =>
     `url(https://storage.googleapis.com/${props.backImage})`};
-  background-color: red;
+  background-color: white;
   width: 50rem;
   min-width: 50rem;
   height: 50.666rem;

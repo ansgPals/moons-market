@@ -2,7 +2,8 @@ import { ChangeEvent, MouseEvent, useState } from "react";
 import * as S from "./boardCommentList.styles";
 import { Rate } from "antd";
 import { Modal } from "antd";
-
+import Rating from "@mui/material/Rating";
+import Stack from "@mui/material/Stack";
 import {
   DELETE_BOARD_COMMENT,
   FETCH_BOARD_COMMENTS,
@@ -16,6 +17,7 @@ import {
 } from "./boardCommentList.types";
 import { useRouter } from "next/router";
 import { getTimeForTodayDate } from "../../../../../commons/library/utils";
+import { fontSize } from "@mui/system";
 
 export default function BoardCommentListItem(props: ICommentList) {
   const [deleteId, setDeleteId] = useState("");
@@ -115,7 +117,7 @@ export default function BoardCommentListItem(props: ICommentList) {
   };
 
   return (
-    <div key={props.el._id}>
+    <div>
       {isEdit === false && (
         <S.ListProfileBox>
           <S.ListProfile>
@@ -175,9 +177,9 @@ export default function BoardCommentListItem(props: ICommentList) {
               type="password"
               onChange={onChangeEditPassWord}
             ></S.PassWordInput>
-            <S.Star>
+            {/* <S.Star>
               <Rate onChange={editStarChange} value={editValue} />
-            </S.Star>
+            </S.Star> */}
           </S.CommentTopBox>
           <S.CommentContents>
             <S.CommentInPut

@@ -1,7 +1,7 @@
 import { gql, useQuery } from "@apollo/client";
 import { useScroll } from "../src/commons/library/scrollHook";
 import { IQuery } from "../src/commons/types/generated/types";
-import MainCarousel from "../src/components/commons/carousel";
+import MainCarousel from "../src/components/commons/carousel-main";
 import TopButtonPage from "../src/components/commons/topButton";
 import { FETCH_USED_ITEM_OF_THE_BEST } from "../src/components/units/main/main-page.query";
 import * as S from "../src/components/units/main/main-page.style";

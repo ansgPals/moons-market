@@ -33,7 +33,6 @@ const schema = yup.object({
 
 export default function SignUpContainer() {
   const router = useRouter();
-  const inputRef = useRef<HTMLInputElement>(null);
   const { register, formState, handleSubmit, watch } = useForm({
     resolver: yupResolver(schema),
     mode: "onChange",
@@ -60,13 +59,6 @@ export default function SignUpContainer() {
   const onChangePasswordOk = (e: ChangeEvent<HTMLInputElement>) => {
     setPasswordOk(e.target.value);
   };
-  useEffect(() => {
-    if (passwordOk === watchFields.password || watchFields.password === "") {
-      setPasswordOkErr("");
-    } else {
-      setPasswordOkErr("입력하신 비밀번호가 다릅니다.");
-    }
-  }, [passwordOk, watchFields.password]);
 
   const onClickSignUp = async (data: IFormValues) => {
     try {
@@ -86,12 +78,14 @@ export default function SignUpContainer() {
     }
   };
   useEffect(() => {
-    inputRef.current?.focus();
-  }, []);
-  console.log(watchFields);
+    if (passwordOk === watchFields.password || watchFields.password === "") {
+      setPasswordOkErr("");
+    } else {
+      setPasswordOkErr("입력하신 비밀번호가 다릅니다.");
+    }
+  }, [passwordOk, watchFields.password]);
   return (
     <SignUpPresenter
-      inputRef={inputRef}
       onClickSignUp={onClickSignUp}
       register={register}
       formState={formState}

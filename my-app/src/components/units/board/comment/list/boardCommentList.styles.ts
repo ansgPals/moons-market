@@ -39,9 +39,8 @@ export const CommentButton = styled.div`
 `;
 export const EditButton = styled.button`
   margin-right: 1.5rem;
-  background-image: url("/freeboard/연필.png");
-  background-size: cover;
-  background-color: white;
+
+  background-color: black;
   width: 1.8rem;
   height: 1.8rem;
   border: none;
@@ -51,7 +50,7 @@ export const DeleteButton = styled.button`
   margin-right: 1.5rem;
   background-image: url("/freeboard/nono.png");
   background-size: cover;
-  background-color: white;
+  background-color: blue;
   width: 1.8rem;
   height: 1, 8rem;
   border: none;
@@ -59,13 +58,13 @@ export const DeleteButton = styled.button`
 `;
 export const DeleteButton2 = styled.button`
   margin-right: 1.5rem;
-  background-image: url("/freeboard/nono.png");
-  background-size: cover;
+  /* background-image: url("/freeboard/nono.png");
+  background-size: cover; */
   width: 2rem;
   height: 2rem;
   border: none;
   cursor: pointer;
-  margin-left: 105rem;
+  margin-left: 1.5rem;
   background-color: white;
 `;
 export const NameStar = styled.div`
@@ -77,7 +76,9 @@ export const NameStar = styled.div`
 `;
 export const ListStar = styled.div`
   margin-left: 2rem;
-  line-height: 1.6rem;
+
+  font-size: 40px;
+  font-size: 2rem;
 `;
 export const ListName = styled.div`
   margin-bottom: 0.5rem;
@@ -101,6 +102,7 @@ export const ListDate = styled.div`
 `;
 
 export const CommentEditBox = styled.div`
+  width: 80rem;
   border-top: #bdbdbd 1px solid;
   border-bottom: #bdbdbd 1px solid;
   padding: 1rem 0px;
@@ -109,17 +111,20 @@ export const CommentTitle = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 5rem 0px;
+  padding: 1.5rem 0px;
 `;
 export const CommentIcon = styled.div`
-  background-image: url("/freeboard/프로필.png");
+  /* background-image: url("/freeboard/프로필.png"); */
   width: 2rem;
   height: 2rem;
-  background-size: cover;
+  /* background-size: cover; */
+  background-color: red;
   margin-right: 1.2rem;
 `;
 export const Title = styled.div`
   font-size: 1.8rem;
+
+  background-color: aqua;
 `;
 export const CommentTopBox = styled.div`
   display: flex;
@@ -153,11 +158,11 @@ export const CommentContents = styled.div`
   display: flex;
   flex-direction: column;
   border: 1px solid #bdbdbd;
-  width: 120rem;
+  width: 80rem;
 `;
 export const CommentInPut = styled.textarea`
   border: none;
-  width: 119rem;
+  width: 79rem;
   min-height: 12rem;
   padding: 1rem;
   font-size: 1.6rem;
@@ -165,7 +170,7 @@ export const CommentInPut = styled.textarea`
 `;
 export const ContentsFootBox = styled.div`
   border-top: #bdbdbd 1px solid;
-  width: 120rem;
+  width: 80rem;
   height: 5rem;
   display: flex;
   flex-direction: row;
