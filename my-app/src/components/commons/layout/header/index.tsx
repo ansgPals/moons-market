@@ -45,7 +45,7 @@ const LOGOUT_USER = gql`
 `;
 
 export default function LayOutHeader() {
-  const [accessToken] = useRecoilState(accessTokenState);
+  const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
   const [logoutUser] = useMutation<Pick<IMutation, "logoutUser">>(LOGOUT_USER);
   const router = useRouter();
 
@@ -55,15 +55,18 @@ export default function LayOutHeader() {
   const onClickSignUp = () => {
     router.push(`/login/SignUp`);
   };
-  const onClickTitle = () => {
-    router.push(`/`);
-  };
+
   const onClickMyPage = () => {
     router.push(`/myPage`);
   };
   const onClickLogout = async () => {
-    const result = await logoutUser();
-    console.log(result);
+    try {
+      const result = await logoutUser();
+      result && setAccessToken("");
+      router.push("/");
+    } catch (error) {
+      alert(error.message);
+    }
   };
 
   return (

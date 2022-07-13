@@ -1,7 +1,7 @@
 import { atom, selector } from "recoil";
 import { getAccessToken } from "../library/getAccessToken";
 
-export const accessTokenState = atom({
+export const accessTokenState = atom<string>({
   key: "accessTokenState",
   default: "",
 });
@@ -33,8 +33,3 @@ export const restoreAccessTokenLoadable = selector({
     return newAccessToken;
   },
 });
-
-// export const isLoadedState = atom({
-//   key: "isLoadedState",
-//   default: true,
-// });
