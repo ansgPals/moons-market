@@ -10,7 +10,7 @@ export default function LoginPagePresenter(props: ILoginPagePresenterProps) {
         error={props.idErr}
         ref={props.inputRef}
         onChange={props.onChangeUserId}
-        placeholder="ID"
+        placeholder="E-Mail"
       ></S.LoginInput>
       <S.InputErr>{props.idErr}</S.InputErr>
       <S.LoginInputDiv

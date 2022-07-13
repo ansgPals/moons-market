@@ -53,7 +53,7 @@ export default function LayOutHeader() {
     router.push(`/login`);
   };
   const onClickSignUp = () => {
-    router.push(`/login/SignUp`);
+    router.push(`/sign-up`);
   };
 
   const onClickMyPage = () => {

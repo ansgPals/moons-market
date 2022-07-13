@@ -94,7 +94,7 @@ export default function LogInContainer() {
       });
       const userInfo = resultUserInfo.data.fetchUserLoggedIn;
       setUserInfo(userInfo);
-
+      alert(`어서오세요 ${userInfo?.name}님!! :)`);
       window.history.back();
     } catch (e) {
       if (e.message === "해당하는 유저가 없습니다.")
