@@ -1,8 +1,8 @@
 
 FROM node:14
 # RUN mkdir class-build 굳이 따로 만들필요없음
-WORKDIR /class-build/
-COPY . /class-build/
+WORKDIR /my-app/
+COPY . /my-app/
 
 
 # 미리해놓고 저장해놓는 명령어들
