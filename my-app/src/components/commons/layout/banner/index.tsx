@@ -54,12 +54,12 @@ export default function LayOutBanner() {
   const router = useRouter();
 
   const [pickArr, setPickArr] = useState([true, false, false]);
-  const pageArr = ["", "/board", ""];
+  const pageArr = ["", "board", "product"];
   const onClickMenu = (menuIndex) => () => {
     const pick = [false, false, false];
     pick[menuIndex] = true;
     setPickArr(pick);
-    router.push(`${pageArr[menuIndex]}`);
+    router.push(`/${pageArr[menuIndex]}`);
   };
   const onClickTitle = () => {
     router.push("/");

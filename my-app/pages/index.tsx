@@ -27,7 +27,7 @@ export default function MoonsMarketMainPage() {
         </S.SubTitle>
         <S.SubTitle>DILL</S.SubTitle>
       </S.PositionRow>
-      <MainCarousel data={data?.fetchUseditemsOfTheBest} />
+      <MainCarousel data={data} />
       <S.MainCenterBox>
         <S.SubTitle
           style={{

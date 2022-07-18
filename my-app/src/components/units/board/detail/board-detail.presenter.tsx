@@ -5,19 +5,22 @@ import { IBoardDetailUIProps } from "./board-detail.types";
 import TopButtonPage from "../../../commons/topButton";
 
 export default function BoardDetailUI(props: IBoardDetailUIProps) {
+  console.log(props.writeUser);
   return (
     <S.Wrapper>
       <TopButtonPage />
       <BackButtonComponent />
-      <S.PositionRow style={{ marginBottom: "2rem" }}>
-        <S.WriterButton
-          onClick={props.OnClickEdit}
-          style={{ marginRight: "1rem" }}
-        >
-          수정
-        </S.WriterButton>
-        <S.WriterButton onClick={props.OnClickDelete}>삭제</S.WriterButton>
-      </S.PositionRow>
+      {props.writeUser && (
+        <S.PositionRow style={{ marginBottom: "2rem" }}>
+          <S.WriterButton
+            onClick={props.OnClickEdit}
+            style={{ marginRight: "1rem" }}
+          >
+            수정
+          </S.WriterButton>
+          <S.WriterButton onClick={props.OnClickDelete}>삭제</S.WriterButton>
+        </S.PositionRow>
+      )}
       <S.BackGround>
         <S.WriterInfo>
           <S.PositionRow>

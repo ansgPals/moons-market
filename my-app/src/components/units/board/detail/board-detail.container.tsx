@@ -1,6 +1,7 @@
 import { useMutation, useQuery } from "@apollo/client";
 
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import {
   IMutation,
   IMutationDeleteBoardArgs,
@@ -9,11 +10,13 @@ import {
   IQuery,
   IQueryFetchBoardArgs,
 } from "../../../../commons/types/generated/types";
+
 import BoardDetailUI from "./board-detail.presenter";
 import {
   DELETE_BOARD,
   DIS_LIKE_BOARD,
   FETCH_BOARD,
+  FETCH_USER_LOGGED_IN,
   LIKE_BOARD,
 } from "./board-detail.querys";
 
@@ -30,16 +33,19 @@ export default function BoardDetailContainer() {
     Pick<IMutation, "dislikeBoard">,
     IMutationDislikeBoardArgs
   >(DIS_LIKE_BOARD);
+
   const router = useRouter();
 
+  const { data: userData } =
+    useQuery<Pick<IQuery, "fetchUserLoggedIn">>(FETCH_USER_LOGGED_IN);
   const { data } = useQuery<Pick<IQuery, "fetchBoard">, IQueryFetchBoardArgs>(
     FETCH_BOARD,
     {
       variables: { boardId: String(router.query.id) },
     }
   );
-  console.log(data);
 
+  const [writeUser, setWriteUser] = useState<boolean>(false);
   const LikeButton = () => {
     likeBoard({
       variables: { boardId: String(data?.fetchBoard._id) },
@@ -73,7 +79,14 @@ export default function BoardDetailContainer() {
   const OnClickEdit = () => {
     router.push(`/board/${router.query.id}/edit`);
   };
-
+  useEffect(() => {
+    console.log(data, userData);
+    if (data?.fetchBoard?.user?._id === userData?.fetchUserLoggedIn?._id) {
+      setWriteUser(true);
+    } else {
+      setWriteUser(false);
+    }
+  }, [data, userData]);
   return (
     <BoardDetailUI
       OnClickEdit={OnClickEdit}
@@ -81,6 +94,7 @@ export default function BoardDetailContainer() {
       data={data}
       DisLikeButton={DisLikeButton}
       LikeButton={LikeButton}
+      writeUser={writeUser}
     />
   );
 }

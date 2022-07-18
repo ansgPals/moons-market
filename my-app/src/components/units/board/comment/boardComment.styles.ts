@@ -19,13 +19,6 @@ export const CommentTitle = styled.div`
   align-items: center;
   padding: 1.5rem 0px;
 `;
-export const CommentIcon = styled.div`
-  background-image: url("/freeboard/프로필.png");
-  width: 2rem;
-  height: 2rem;
-  background-size: cover;
-  margin-right: 1.2rem;
-`;
 export const Title = styled.div`
   font-size: 1.8rem;
 `;
@@ -33,11 +26,10 @@ export const CommentTopBox = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 1.5rem 0px;
 `;
 export const NameInput = styled.input`
   width: 18rem;
-  height: 5.2rem;
+  height: 3rem;
   font-size: 1.6rem;
   padding: 1rem;
   color: #828282;
@@ -46,7 +38,7 @@ export const NameInput = styled.input`
 `;
 export const PassWordInput = styled.input`
   width: 18rem;
-  height: 5.2rem;
+  height: 3rem;
   font-size: 1.6rem;
   padding: 1rem;
   color: #828282;
@@ -66,7 +58,7 @@ export const CommentContents = styled.div`
 export const CommentInPut = styled.textarea`
   border: none;
   width: 79rem;
-  min-height: 12rem;
+  min-height: 10rem;
   padding: 1rem;
   font-size: 1.6rem;
   color: #828282;
@@ -74,13 +66,13 @@ export const CommentInPut = styled.textarea`
 export const ContentsFootBox = styled.div`
   border-top: #bdbdbd 1px solid;
   width: 80rem;
-  height: 5rem;
+  height: 3rem;
   display: flex;
   flex-direction: row;
 `;
 export const TextLimit = styled.div`
   width: 108rem;
-  padding: 1rem;
+  padding-left: 1rem;
   color: #bdbdbd;
   font-size: 1.6rem;
   text-align: start;
@@ -90,9 +82,10 @@ export const OKButton = styled.div`
   background-color: black;
   width: 12rem;
   color: white;
-  font-size: 1.6rem;
+  line-height: 3rem;
+  font-size: 1.5rem;
   text-align: center;
-  line-height: 5rem;
+
   cursor: pointer;
   :hover {
     background-color: gray;

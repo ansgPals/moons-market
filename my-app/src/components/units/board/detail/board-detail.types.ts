@@ -6,4 +6,5 @@ export interface IBoardDetailUIProps {
   data: Pick<IQuery, "fetchBoard">;
   DisLikeButton: () => void;
   LikeButton: () => void;
+  writeUser: boolean;
 }

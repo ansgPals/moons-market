@@ -2,8 +2,7 @@ import { ChangeEvent, MouseEvent, useState } from "react";
 import * as S from "./boardCommentList.styles";
 import { Rate } from "antd";
 import { Modal } from "antd";
-import Rating from "@mui/material/Rating";
-import Stack from "@mui/material/Stack";
+
 import {
   DELETE_BOARD_COMMENT,
   FETCH_BOARD_COMMENTS,
@@ -17,7 +16,6 @@ import {
 } from "./boardCommentList.types";
 import { useRouter } from "next/router";
 import { getTimeForTodayDate } from "../../../../../commons/library/utils";
-import { fontSize } from "@mui/system";
 
 export default function BoardCommentListItem(props: ICommentList) {
   const [deleteId, setDeleteId] = useState("");
@@ -33,9 +31,6 @@ export default function BoardCommentListItem(props: ICommentList) {
 
   const router = useRouter();
 
-  const editStarChange = (value: number) => {
-    setEditValue(value);
-  };
   const onChangeEditPassWord = (event: ChangeEvent<HTMLInputElement>) => {
     setEditPass(event.target.value);
   };
@@ -60,7 +55,6 @@ export default function BoardCommentListItem(props: ICommentList) {
       alert("댓글이 삭제되었습니다.");
       DeleteModal();
     } catch (error) {
-      console.log(error);
       alert(error);
     }
   };
@@ -74,7 +68,6 @@ export default function BoardCommentListItem(props: ICommentList) {
     if (isEdit === false) setIsEdit(true);
     if (isEdit === true) setIsEdit(false);
     setCommentId((event.target as HTMLButtonElement).id);
-    console.log(commentId);
   };
 
   const CloseEdit = () => {
@@ -108,7 +101,6 @@ export default function BoardCommentListItem(props: ICommentList) {
       alert("댓글이 수정되었습니다.");
       setIsEdit(false);
     } catch (error) {
-      console.log(error);
       alert(error);
     }
   };
@@ -123,23 +115,16 @@ export default function BoardCommentListItem(props: ICommentList) {
           <S.ListProfile>
             <S.Photo src="/defaultProfileImg.png" />
             <S.ListContents>
-              <S.NameStar>
-                <S.ListName>{props.el.writer}</S.ListName>{" "}
-                <S.ListStar>
-                  <Rate value={props.el.rating} disabled />
-                </S.ListStar>
-              </S.NameStar>
+              <S.ListName>{props.el.writer}</S.ListName>{" "}
               <S.ListComment>{props.el.contents} </S.ListComment>
             </S.ListContents>
             <S.CommentButton>
-              <S.EditButton
-                id={props.el._id}
-                onClick={editCommentIcon}
-              ></S.EditButton>
-              <S.DeleteButton
-                onClick={DeletePassWord}
-                id={props.el._id}
-              ></S.DeleteButton>
+              <S.EditButton id={props.el._id} onClick={editCommentIcon}>
+                수정
+              </S.EditButton>
+              <S.DeleteButton onClick={DeletePassWord} id={props.el._id}>
+                삭제
+              </S.DeleteButton>
               {deleteOpen && (
                 <Modal
                   visible={true}
@@ -162,9 +147,10 @@ export default function BoardCommentListItem(props: ICommentList) {
       {isEdit === true && (
         <S.CommentEditBox>
           <S.CommentTitle>
-            <S.CommentIcon></S.CommentIcon>
             <S.Title>댓글수정</S.Title>
-            <S.DeleteButton2 onClick={CloseEdit}></S.DeleteButton2>
+            <S.DeleteButton style={{ marginRight: "0px" }} onClick={CloseEdit}>
+              취소
+            </S.DeleteButton>
           </S.CommentTitle>
           <S.CommentTopBox>
             <S.NameInput
@@ -177,9 +163,6 @@ export default function BoardCommentListItem(props: ICommentList) {
               type="password"
               onChange={onChangeEditPassWord}
             ></S.PassWordInput>
-            {/* <S.Star>
-              <Rate onChange={editStarChange} value={editValue} />
-            </S.Star> */}
           </S.CommentTopBox>
           <S.CommentContents>
             <S.CommentInPut
@@ -189,7 +172,7 @@ export default function BoardCommentListItem(props: ICommentList) {
             ></S.CommentInPut>
             <S.ContentsFootBox>
               <S.TextLimit>{editContents.length}/100</S.TextLimit>
-              <S.OKButton onClick={UpDateComment}>수정하기</S.OKButton>
+              <S.OKButton onClick={UpDateComment}>수정</S.OKButton>
             </S.ContentsFootBox>
           </S.CommentContents>
         </S.CommentEditBox>

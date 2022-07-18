@@ -11,8 +11,6 @@ export interface IBoardCommentUIProps {
   writer: string;
   pass: string;
   contents: string;
-  StarChange: (value: number) => void;
-  value: number;
   CommentScrolling: () => void;
 }
 

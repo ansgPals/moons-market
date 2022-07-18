@@ -13,8 +13,21 @@ export const FETCH_BOARD = gql`
       youtubeUrl
       images
       user {
-        name
+        email
         picture
+        _id
+      }
+    }
+  }
+`;
+export const FETCH_USER_LOGGED_IN = gql`
+  query fetchUserLoggedIn {
+    fetchUserLoggedIn {
+      email
+      name
+      _id
+      userPoint {
+        amount
       }
     }
   }

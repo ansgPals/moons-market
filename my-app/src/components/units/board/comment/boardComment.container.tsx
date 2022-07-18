@@ -16,12 +16,7 @@ export default function BoardCommentContainer() {
   const [writer, setWriter] = useState("");
   const [pass, setPass] = useState("");
   const [contents, setContents] = useState("");
-  const [value, setValue] = useState(3);
   const [createBoardComment] = useMutation(CREATE_BOARD_COMMENT);
-
-  const StarChange = (value: number) => {
-    setValue(value);
-  };
 
   const onChangeWriter = (event: ChangeEvent<HTMLInputElement>) => {
     setWriter(event.target.value);
@@ -33,7 +28,7 @@ export default function BoardCommentContainer() {
     setContents(event.target.value);
   };
 
-  const { data, fetchMore, refetch } = useQuery<
+  const { data, fetchMore } = useQuery<
     Pick<IQuery, "fetchBoardComments">,
     IQueryFetchBoardCommentsArgs
   >(FETCH_BOARD_COMMENTS, {
@@ -53,7 +48,7 @@ export default function BoardCommentContainer() {
               writer: writer,
               password: pass,
               contents: contents,
-              rating: value,
+              rating: 0,
             },
             boardId: String(router.query.id),
           },
@@ -102,8 +97,6 @@ export default function BoardCommentContainer() {
       writer={writer}
       pass={pass}
       contents={contents}
-      StarChange={StarChange}
-      value={value}
       CommentScrolling={CommentScrolling}
     />
   );

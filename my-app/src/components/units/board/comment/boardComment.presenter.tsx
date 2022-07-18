@@ -10,10 +10,9 @@ export default function BoardCommentUI(props: IBoardCommentUIProps) {
       <MY.BackGround>
         <MY.CommentBox>
           <MY.CommentTitle>
-            <MY.CommentIcon></MY.CommentIcon>
             <MY.Title>댓글</MY.Title>
           </MY.CommentTitle>
-          <MY.CommentTopBox>
+          <MY.CommentTopBox style={{ marginBottom: "2rem" }}>
             <MY.NameInput
               id="inputWriter"
               placeholder="작성자"
@@ -27,9 +26,6 @@ export default function BoardCommentUI(props: IBoardCommentUIProps) {
               onChange={props.onChangePassWord}
               value={props.pass}
             ></MY.PassWordInput>
-            <MY.Star>
-              <Rate onChange={props.StarChange} value={props.value} />
-            </MY.Star>
           </MY.CommentTopBox>
           <MY.CommentContents>
             <MY.CommentInPut
@@ -40,11 +36,10 @@ export default function BoardCommentUI(props: IBoardCommentUIProps) {
             ></MY.CommentInPut>
             <MY.ContentsFootBox>
               <MY.TextLimit>{props.contents.length}/100</MY.TextLimit>
-              <MY.OKButton onClick={props.ClickOKButton}>등록하기</MY.OKButton>
+              <MY.OKButton onClick={props.ClickOKButton}>등록</MY.OKButton>
             </MY.ContentsFootBox>
           </MY.CommentContents>
         </MY.CommentBox>
-
         <MY.CommentListBox>
           <InfiniteScroll
             pageStart={0}

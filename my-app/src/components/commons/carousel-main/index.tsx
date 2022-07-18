@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import NextArrow from "./NextArrow";
 import PrevArrow from "./PrevArrow";
 import Slider from "react-slick";
+import { IQuery } from "../../../commons/types/generated/types";
 
 const ReactSlick = styled(Slider)`
   width: 170rem;
@@ -75,21 +76,7 @@ const DetailButton = styled.button`
 export default function WaitingCardSlider({
   data,
 }: {
-  data: Array<{
-    contents?: string;
-    createdAt?: string;
-    deletedAt?: null;
-    images?: string[];
-    name?: string;
-    pickedCount?: number;
-    price?: number;
-    remarks?: string;
-    soldAt?: null;
-    tags?: string[];
-    updatedAt?: string;
-    __typename?: string;
-    _id?: string;
-  }>;
+  data: Pick<IQuery, "fetchUseditemsOfTheBest">;
 }) {
   const settings = {
     centerMode: false,
@@ -107,7 +94,7 @@ export default function WaitingCardSlider({
   return (
     <div>
       <ReactSlick {...settings}>
-        {data?.map((el, i) => (
+        {data?.fetchUseditemsOfTheBest?.map((el, i) => (
           <div key={i}>
             <SlickWrapper>
               <ProductImage backImage={el?.images?.[0]}></ProductImage>

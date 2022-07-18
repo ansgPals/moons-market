@@ -11,6 +11,7 @@ export const ListProfileBox = styled.div`
 `;
 
 export const ListProfile = styled.div`
+  width: 80rem;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -24,49 +25,39 @@ export const Photo = styled.img`
   background-size: cover;
 `;
 export const ListContents = styled.div`
-  width: 100rem;
-
+  width: 60rem;
   padding: 1rem;
   display: flex;
   flex-direction: column;
 `;
 export const CommentButton = styled.div`
-  width: 14rem;
-  height: 5rem;
   display: flex;
   flex-direction: row;
   justify-content: end;
 `;
 export const EditButton = styled.button`
-  margin-right: 1.5rem;
-
-  background-color: black;
-  width: 1.8rem;
+  margin-right: 0.5rem;
+  background-color: white;
+  width: 3.5rem;
+  min-width: 35px;
   height: 1.8rem;
   border: none;
   cursor: pointer;
+  font-size: 1rem;
+  color: gray;
 `;
 export const DeleteButton = styled.button`
-  margin-right: 1.5rem;
-  background-image: url("/freeboard/nono.png");
-  background-size: cover;
-  background-color: blue;
-  width: 1.8rem;
-  height: 1, 8rem;
-  border: none;
-  cursor: pointer;
-`;
-export const DeleteButton2 = styled.button`
-  margin-right: 1.5rem;
-  /* background-image: url("/freeboard/nono.png");
-  background-size: cover; */
-  width: 2rem;
-  height: 2rem;
-  border: none;
-  cursor: pointer;
-  margin-left: 1.5rem;
+  margin-right: 15px;
   background-color: white;
+  width: 3.5rem;
+  min-width: 35px;
+  height: 1.8rem;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: gray;
 `;
+
 export const NameStar = styled.div`
   display: flex;
   flex-direction: row;
@@ -77,8 +68,8 @@ export const NameStar = styled.div`
 export const ListStar = styled.div`
   margin-left: 2rem;
 
-  font-size: 40px;
-  font-size: 2rem;
+  padding-bottom: 15px;
+  display: flex;
 `;
 export const ListName = styled.div`
   margin-bottom: 0.5rem;
@@ -94,10 +85,11 @@ export const ListComment = styled.div`
 export const ListDate = styled.div`
   width: 80rem;
   height: 3rem;
-  padding-left: 7rem;
   margin-bottom: 1rem;
   font-size: 1.2rem;
   line-height: 3rem;
+  text-align: start;
+  padding-left: 2rem;
   color: #bdbdbd;
 `;
 
@@ -111,20 +103,12 @@ export const CommentTitle = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   padding: 1.5rem 0px;
 `;
-export const CommentIcon = styled.div`
-  /* background-image: url("/freeboard/프로필.png"); */
-  width: 2rem;
-  height: 2rem;
-  /* background-size: cover; */
-  background-color: red;
-  margin-right: 1.2rem;
-`;
+
 export const Title = styled.div`
   font-size: 1.8rem;
-
-  background-color: aqua;
 `;
 export const CommentTopBox = styled.div`
   display: flex;
@@ -134,7 +118,7 @@ export const CommentTopBox = styled.div`
 `;
 export const NameInput = styled.input`
   width: 18rem;
-  height: 5.2rem;
+  height: 3rem;
   font-size: 1.6rem;
   padding: 1rem;
   color: #828282;
@@ -143,9 +127,9 @@ export const NameInput = styled.input`
 `;
 export const PassWordInput = styled.input`
   width: 18rem;
-  height: 5.2rem;
+  height: 3rem;
   font-size: 1.6rem;
-  padding: 1rem;
+  padding-left: 1rem;
   color: #828282;
   border: #bdbdbd 1px solid;
 `;
@@ -163,7 +147,7 @@ export const CommentContents = styled.div`
 export const CommentInPut = styled.textarea`
   border: none;
   width: 79rem;
-  min-height: 12rem;
+  min-height: 10rem;
   padding: 1rem;
   font-size: 1.6rem;
   color: #828282;
@@ -171,13 +155,13 @@ export const CommentInPut = styled.textarea`
 export const ContentsFootBox = styled.div`
   border-top: #bdbdbd 1px solid;
   width: 80rem;
-  height: 5rem;
+  height: 3rem;
   display: flex;
   flex-direction: row;
 `;
 export const TextLimit = styled.div`
   width: 108rem;
-  padding: 1rem;
+  padding-left: 1rem;
   color: #bdbdbd;
   font-size: 1.6rem;
   text-align: start;
@@ -187,9 +171,9 @@ export const OKButton = styled.div`
   background-color: black;
   width: 12rem;
   color: white;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   text-align: center;
-  line-height: 5rem;
+  line-height: 3rem;
   cursor: pointer;
   :hover {
     background-color: gray;

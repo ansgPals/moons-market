@@ -22,13 +22,13 @@ const TopButton = styled.button`
   :hover {
     box-shadow: 0px 5px 15px rgba(100, 0, 255, 0.15);
     .Arrow {
-      background-image: url("/lecture/note/arrow-purple.png");
+      background-image: url("/arrow-purple.png");
     }
   }
   right: 5%;
 `;
 const Arrow = styled.div`
-  background-image: url("/lecture/note/arrow-black.png");
+  background-image: url("/arrow-black.png");
   background-size: cover;
   height: 22px;
   width: 13px;
