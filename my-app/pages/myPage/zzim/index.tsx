@@ -3,33 +3,16 @@ import styled from "@emotion/styled";
 
 import ZzimItemPage from "../../../src/components/units/zzim/zzimItem";
 
-const Back = styled.div`
-  margin-top: 150px;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
 const Wrapper = styled.div`
-  width: 1200px;
+  width: 80rem;
   height: fit-content;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  margin-top: 4rem;
 `;
-const Title = styled.div`
-  max-width: 1200px;
-  min-width: 800px;
-  width: 60vw;
-  height: 60px;
-  border-bottom: orange 1px solid;
-  padding-left: 20px;
-  font-weight: bold;
-  color: #25d125;
-  font-size: 35px;
-`;
+
 const ZzimItem = styled.div`
   width: 500px;
   font-size: 35px;
@@ -76,20 +59,17 @@ export default function MyZzimPage() {
       search: "",
     },
   });
-  console.log(data?.fetchUseditemsIPicked[0]._id);
+
   return (
     <>
-      <Back>
-        <Wrapper>
-          <Title>찜목록</Title>
-          <ZzimItem>
-            {" "}
-            {data?.fetchUseditemsIPicked.map((el) => (
-              <ZzimItemPage el={el} key={el._id} />
-            ))}
-          </ZzimItem>
-        </Wrapper>
-      </Back>
+      <Wrapper>
+        <ZzimItem>
+          {" "}
+          {data?.fetchUseditemsIPicked.map((el) => (
+            <ZzimItemPage el={el} key={el._id} />
+          ))}
+        </ZzimItem>
+      </Wrapper>
     </>
   );
 }

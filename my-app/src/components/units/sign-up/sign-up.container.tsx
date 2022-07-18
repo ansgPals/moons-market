@@ -74,7 +74,7 @@ export default function SignUpContainer() {
       alert("회원가입을 환영합니다! 로그인화면 으로 이동합니다.");
       router.push(`/login`);
     } catch (error: any) {
-      alert(error);
+      alert(error.message);
     }
   };
   useEffect(() => {

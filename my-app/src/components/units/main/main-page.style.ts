@@ -50,7 +50,7 @@ export const MainCenterImgBox = styled.div`
   background-color: #7050c7;
   width: 100vw;
   min-width: 800px;
-  height: 60rem;
+  height: 50rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -70,7 +70,7 @@ export const MainCenterImgBox = styled.div`
 export const MainCenterImg = styled.div`
   width: 100vw;
   min-width: 800px;
-  height: 60rem;
+  height: 50rem;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -93,7 +93,7 @@ export const HoverBox = styled.div`
   visibility: hidden;
   width: 100vw;
   min-width: 80rem;
-  height: 60rem;
+  height: 50rem;
   z-index: 2;
   color: white;
   background-color: rgba(0, 0, 0, 0.6);
@@ -111,6 +111,7 @@ export const GoCommunity = styled.button`
 `;
 export const PositionRow = styled.div`
   width: 120rem;
+
   display: flex;
   flex-direction: row;
   align-items: center;

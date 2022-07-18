@@ -14,7 +14,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-end;
-  min-width: 800px;
+
   border-bottom: #c7c7c7 1px solid;
   z-index: 100;
 `;

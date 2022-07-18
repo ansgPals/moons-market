@@ -5,72 +5,71 @@ import { Modal } from "antd";
 import Head from "next/head";
 import { useState } from "react";
 export const Back = styled.div`
-  margin: 100px 100px;
-  margin-top: 200px;
-  border: 12px solid greenyellow;
-  padding: 50px;
+  margin-top: 4rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 25px;
 `;
 
-export const Wrapper = styled.div`
-  max-width: 1200px;
-  min-width: 800px;
-  min-height: 800px;
-  width: 60vw;
-  border-bottom: 1px solid #e8e7e7;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 20px;
-  padding-bottom: 20px;
-  font-size: 50px;
-`;
 export const PointBox = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 800px;
-
-  padding: 50px;
+  justify-content: center;
+  width: 80rem;
+  padding: 5rem;
 `;
 export const Point = styled.div`
-  width: 200px;
-  height: 80px;
-  margin-right: 10px;
-  margin-bottom: 10px;
+  width: 20rem;
+  height: 8rem;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
   text-align: center;
-  border: 2px solid orange;
-  border-radius: 10px;
+  border-radius: 1rem;
   cursor: pointer;
+  border: 2px solid #5500ff;
+  :hover {
+    background-color: #5500ff;
+    border: none;
+    color: white;
+  }
+  font-size: 2.5rem;
+  line-height: 8rem;
 `;
 export const PickPoint = styled.div`
-  width: 200px;
-  height: 80px;
-  margin-right: 10px;
-  margin-bottom: 10px;
+  width: 20rem;
+  height: 8rem;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
   text-align: center;
-  border: 2px solid orange;
-  border-radius: 10px;
+  border-radius: 1rem;
   cursor: pointer;
-  background-color: #ffe0a7;
+
+  background-color: #5500ff;
+  border: none;
+  color: white;
+  font-size: 2.5rem;
+  line-height: 8rem;
 `;
 export const PaymentButton = styled.button`
-  width: 400px;
-  height: 180px;
-  margin-bottom: 200px;
-  font-size: 50px;
-  border-radius: 20px;
-  border: 13px #8ee599 solid;
-  background-color: white;
+  width: 40rem;
+  height: 8rem;
+  margin-bottom: 2rem;
+  font-size: 3rem;
+  border-radius: 1rem;
+
+  background-color: #5500ff;
+  border: none;
+  color: white;
   cursor: pointer;
   :hover {
-    background-color: #f7ffe0;
+    font-family: "SUIT700";
   }
+`;
+export const Text = styled.div`
+  font-size: 2rem;
+  margin-bottom: 2rem;
 `;
 const FETCH_USER_LOGGED_IN = gql`
   query fetchUserLoggedIn {
@@ -99,15 +98,15 @@ export default function ChargePointPage() {
   const [createPointTransactionOfLoading] = useMutation(
     CREATE_POINT_TRANSACTION_OF_LOADING
   );
-  const pointArr = [5, 10, 15, 100, 200, 300];
-  // const router=useRouter
+  const pointArr = [1000, 2000, 10000, 20000, 30000, 40000];
+
   const onClickPayment = async () => {
-    const IMP = window.IMP; // 생략 가능
-    IMP.init("imp49910675"); // 가맹점 식별코드
+    const IMP = window.IMP;
+    IMP.init("imp49910675");
     IMP.request_pay(
       {
         pg: "html5_inicis",
-        pay_method: "card", // 가상계좌하면 vbank
+        pay_method: "card",
         name: "문스마켓충천하기",
         amount: Number(amount),
         buyer_email: "gildong@gmail.com",
@@ -118,14 +117,13 @@ export default function ChargePointPage() {
         m_redirect_url: `https://moonsportfolio.shop//myPage/charge-point`,
       },
       async (rsp: any) => {
-        // callback
         if (rsp.success) {
           const impUid = rsp.imp_uid;
-          const result = await createPointTransactionOfLoading({
+          await createPointTransactionOfLoading({
             variables: { impUid },
           });
           Modal.info({ content: "결제가 성공되었어요!" });
-          console.log(result);
+
           refetch({});
         } else {
           alert("결제실패");
@@ -150,31 +148,35 @@ export default function ChargePointPage() {
           src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"
         ></script>
       </Head>
-
-      <Wrapper>
-        <PointBox>
-          {pointArr.map((el, index) =>
-            amount === el ? (
-              <PickPoint key={index} onClick={onClickPoint(el)}>
-                {el}MP
-              </PickPoint>
-            ) : (
-              <Point key={index} onClick={onClickPoint(el)}>
-                {el}MP
-              </Point>
-            )
-          )}
-        </PointBox>
+      <PointBox>
+        {pointArr.map((el, index) =>
+          amount === el ? (
+            <PickPoint key={index} onClick={onClickPoint(el)}>
+              {el}MP
+            </PickPoint>
+          ) : (
+            <Point key={index} onClick={onClickPoint(el)}>
+              {el}MP
+            </Point>
+          )
+        )}
+      </PointBox>
+      <Text>
+        {" "}
         내포인트 :
         {data?.fetchUserLoggedIn.userPoint.amount
           ? data?.fetchUserLoggedIn.userPoint.amount
           : 0}
         MP + 충전포인트 : {amount}MP{""} ={" "}
         {data?.fetchUserLoggedIn.userPoint.amount + amount}MP
-      </Wrapper>
+      </Text>
       <PaymentButton onClick={onClickPayment}>
         {amount}원 {"  "}결제하기
       </PaymentButton>
+      <Text style={{ marginBottom: "10rem" }}>
+        이페이지는 포트폴리오 페이지로 결제후 금액은 카드사에서 자동으로
+        환불됩니다.
+      </Text>
     </Back>
   );
 }

@@ -2,7 +2,6 @@ import { Modal } from "antd";
 import { gql, useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { useRecoilState } from "recoil";
 
 import {
   DELETE_USED_ITEM,
@@ -64,7 +63,7 @@ export default function ProductDetailContainer() {
       Modal.info({ content: "상품이 삭제되었습니다!!" });
       router.push(`/product`);
     } catch (error) {
-      alert(error);
+      alert(error.message);
     }
   };
   const onClickPick = () => {
@@ -85,7 +84,7 @@ export default function ProductDetailContainer() {
         ],
       });
     } catch (error) {
-      alert(error);
+      alert(error.message);
     }
   };
 
@@ -135,7 +134,7 @@ export default function ProductDetailContainer() {
     showBasketModal();
   };
   useEffect(() => {
-    if (data?.fetchUseditem.useditemAddress?.address?.[0]) {
+    if (data?.fetchUseditem.useditemAddress?.address) {
       kakaoMap(data?.fetchUseditem.useditemAddress.address);
     }
     if (pickData?.fetchUseditemsIPicked) {

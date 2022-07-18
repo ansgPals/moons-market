@@ -99,7 +99,6 @@ export default function ProductCommentPage() {
     mode: "onChange",
   });
   const onClickSubmit = async (data: IFormValues) => {
-    console.log(data);
     if (formState.isValid) {
       try {
         await createUseditemQuestion({
@@ -121,7 +120,6 @@ export default function ProductCommentPage() {
 
         reset();
       } catch (error: any) {
-        console.log(error);
         alert(error.message);
       }
     }

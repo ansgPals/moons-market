@@ -7,84 +7,55 @@ import { IQuery } from "../../../src/commons/types/generated/types";
 import BasketItemPage from "../../../src/components/units/basket/basketItem";
 
 const Back = styled.div`
-  margin-top: 150px;
-  width: 100vw;
+  width: 80rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-top: 4rem;
 `;
-const Wrapper = styled.div`
-  width: 1200px;
-  height: fit-content;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-`;
-const Title = styled.div`
-  max-width: 1200px;
-  min-width: 800px;
-  width: 60vw;
-  height: 60px;
-  border-bottom: orange 1px solid;
-  padding-left: 20px;
-  font-weight: bold;
-  color: #25d125;
-  font-size: 35px;
-`;
-const BasketItem = styled.div`
-  width: 500px;
-  font-size: 35px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  margin-bottom: 30px;
-`;
+
 export const ChongBox = styled.div`
-  max-width: 1200px;
-  min-width: 800px;
-  width: 60vw;
+  width: 80rem;
+  padding: 5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 300px;
 `;
 
 export const Row = styled.div`
-  max-width: 1200px;
-  min-width: 800px;
-  height: 60px;
-  width: 60vw;
-  padding: 0px 50px;
+  width: 80rem;
+  padding: 0rem 7rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 `;
 export const SubTitle = styled.div`
-  font-size: 30px;
+  font-size: 2rem;
   color: #999999;
 `;
 export const RtBox = styled.div`
-  font-size: 30px;
-  color: orange;
+  font-size: 2rem;
+  color: #5500ff;
   font-weight: bold;
 `;
 const PaymentButton = styled.button`
-  height: 80px;
-  width: 300px;
-  font-size: 30px;
-  background-color: orange;
-  color: white;
-  border: none;
-  border-radius: 15px;
+  height: 7rem;
+  width: 30rem;
+  font-size: 2.5rem;
+  background-color: white;
+
+  color: black;
+  border: 2px solid #5500ff;
+  border-radius: 1rem;
   cursor: pointer;
   :hover {
-    background-color: #ffbf75;
+    background-color: #5500ff;
+    border: none;
+    color: white;
   }
-  margin-bottom: 50px;
+  margin-bottom: 5rem;
 `;
 export const CheckBox = styled.input`
   margin-right: 10px;
@@ -147,12 +118,12 @@ export default function MyBasketPage() {
       Modal.info({
         content: "잔여 포인트가 부족합니다. 충전페이지로 이동합니다.",
       });
-      router.push(`/mypage/charge-point`);
+      router.push(`/myPage/charge-point`);
       return;
     }
 
     try {
-      const result = await Promise.all(
+      await Promise.all(
         buyingList.map(
           (el) =>
             el &&
@@ -161,7 +132,7 @@ export default function MyBasketPage() {
             })
         )
       );
-      console.log(result);
+
       Modal.info({ content: `상품이 구매되었어요!` });
     } catch (errors) {
       Modal.error({ content: errors.message });
@@ -171,42 +142,37 @@ export default function MyBasketPage() {
   return (
     <>
       <Back>
-        <Wrapper>
-          <Title> 장바구니</Title>
-          <BasketItem>
-            {" "}
-            {basketItems.map((el) => (
-              <BasketItemPage
-                el={el}
-                key={el._id}
-                buyingList={buyingList}
-                setBuyingList={setBuyingList}
-                setBuyingMoney={setBuyingMoney}
-              />
-            ))}
-          </BasketItem>
-          <ChongBox>
-            <Row>
-              <SubTitle>총 상품금액</SubTitle>
-              <RtBox>{buyingMoney}원</RtBox>
-            </Row>
-            <Row>
-              <SubTitle>내 포인트</SubTitle>
-              <RtBox style={{ color: "black" }}>
-                {userData?.fetchUserLoggedIn.userPoint.amount}원
-              </RtBox>
-            </Row>
-            <Row>
-              <SubTitle>구매후잔여포인트</SubTitle>
-              <RtBox style={{ color: "black" }}>
-                {userData?.fetchUserLoggedIn.userPoint.amount - buyingMoney}원
-              </RtBox>
-            </Row>
-            <PaymentButton onClick={onClickPayment}>
-              {buyingMoney}원 주문하기
-            </PaymentButton>
-          </ChongBox>
-        </Wrapper>
+        {" "}
+        {basketItems.map((el) => (
+          <BasketItemPage
+            el={el}
+            key={el._id}
+            buyingList={buyingList}
+            setBuyingList={setBuyingList}
+            setBuyingMoney={setBuyingMoney}
+          />
+        ))}
+        <ChongBox>
+          <Row>
+            <SubTitle>총 상품금액</SubTitle>
+            <RtBox>{buyingMoney}원</RtBox>
+          </Row>
+          <Row>
+            <SubTitle>내 포인트</SubTitle>
+            <RtBox style={{ color: "black" }}>
+              {userData?.fetchUserLoggedIn.userPoint.amount}원
+            </RtBox>
+          </Row>
+          <Row>
+            <SubTitle>구매후잔여포인트</SubTitle>
+            <RtBox style={{ color: "black" }}>
+              {userData?.fetchUserLoggedIn.userPoint.amount - buyingMoney}원
+            </RtBox>
+          </Row>
+          <PaymentButton onClick={onClickPayment}>
+            {buyingMoney}원 주문하기
+          </PaymentButton>
+        </ChongBox>
       </Back>
     </>
   );

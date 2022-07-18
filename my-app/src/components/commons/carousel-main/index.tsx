@@ -3,6 +3,8 @@ import NextArrow from "./NextArrow";
 import PrevArrow from "./PrevArrow";
 import Slider from "react-slick";
 import { IQuery } from "../../../commons/types/generated/types";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
 
 const ReactSlick = styled(Slider)`
   width: 170rem;
@@ -19,8 +21,8 @@ interface IBackProps {
 const DetailBox = styled.div`
   display: flex;
   flex-direction: column;
-  width: 50rem;
-  height: 51rem;
+  width: 40rem;
+  height: 40rem;
   margin-left: 10rem;
   justify-content: space-between;
   align-items: center;
@@ -36,37 +38,37 @@ const ProductImage = styled.div`
   background-image: ${(props: IBackProps) =>
     `url(https://storage.googleapis.com/${props.backImage})`};
   background-color: white;
-  width: 50rem;
-  min-width: 50rem;
-  height: 50.666rem;
+  width: 40rem;
+  height: 40rem;
   background-size: cover;
   background-repeat: no-repeat;
 `;
 const Title = styled.div`
   margin-top: 10rem;
-  width: 50rem;
+  width: 40rem;
   border-bottom: 1px solid #7050c7;
   text-align: center;
   color: black;
-  font-size: 4rem;
+  font-size: 3rem;
   margin-bottom: 1.6rem;
 `;
 const SubTitle = styled.div`
-  max-width: 50rem;
+  max-width: 40rem;
   color: black;
   font-size: 2.5rem;
+  text-align: center;
 `;
 
 const DetailButton = styled.button`
-  width: 50rem;
-  height: 8rem;
+  width: 40rem;
+  height: 7rem;
   cursor: pointer;
   background: black;
   border-radius: 1rem;
   border: none;
   color: white;
   font-family: "SUIT700";
-  font-size: 2.5rem;
+  font-size: 2rem;
   margin-bottom: 4rem;
   :hover {
     background-color: #7050c7;
@@ -90,6 +92,10 @@ export default function WaitingCardSlider({
     prevArrow: <PrevArrow />,
     nextArrow: <NextArrow />,
   };
+  const router = useRouter();
+  const onClickProduct = (id: string) => () => {
+    router.push(`/product/${id}`);
+  };
 
   return (
     <div>
@@ -103,7 +109,9 @@ export default function WaitingCardSlider({
                   <Title>{el?.name}</Title>
                   <SubTitle>{el?.remarks}</SubTitle>
                 </div>
-                <DetailButton>더 알아보기</DetailButton>
+                <DetailButton onClick={onClickProduct(el?._id)}>
+                  더 알아보기
+                </DetailButton>
               </DetailBox>
             </SlickWrapper>
           </div>

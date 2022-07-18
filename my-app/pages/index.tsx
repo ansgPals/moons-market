@@ -1,4 +1,5 @@
 import { gql, useQuery } from "@apollo/client";
+import { useRouter } from "next/router";
 import { useScroll } from "../src/commons/library/scrollHook";
 import { IQuery } from "../src/commons/types/generated/types";
 import MainCarousel from "../src/components/commons/carousel-main";
@@ -10,7 +11,10 @@ export default function MoonsMarketMainPage() {
   const { data } = useQuery<Pick<IQuery, "fetchUseditemsOfTheBest">>(
     FETCH_USED_ITEM_OF_THE_BEST
   );
-
+  const router = useRouter();
+  const onClickGoStyle = () => {
+    router.push("/board");
+  };
   const { scrollY } = useScroll();
 
   return (
@@ -40,7 +44,7 @@ export default function MoonsMarketMainPage() {
         </S.SubTitle>
         <S.MainCenterImgBox scrollY={scrollY}>
           <S.MainCenterImg>
-            <S.HoverBox>
+            <S.HoverBox onClick={onClickGoStyle}>
               <S.GoCommunity>지금 마켓러 스타일보드 보러가기!</S.GoCommunity>
               <S.GoCommunity></S.GoCommunity>
             </S.HoverBox>

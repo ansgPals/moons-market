@@ -258,12 +258,12 @@ export default function MyBasketPage() {
     }
 
     try {
-      const result = await createPointTransactionOfBuyingAndSelling({
+      await createPointTransactionOfBuyingAndSelling({
         variables: {
           useritemId: productId,
         },
       });
-      console.log(result);
+
       Modal.info({ content: "상품이 구매되었어요!" });
       router.push(`/usedItem`);
     } catch (errors) {

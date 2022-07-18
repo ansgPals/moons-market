@@ -20,8 +20,8 @@ const Prev = styled.div`
   :hover {
     background-color: rgba(159, 63, 255, 0.3);
   }
-  margin-top: 12%;
-  margin-left: 12%;
+  margin-top: 8%;
+  margin-left: 16%;
 `;
 export default function PrevArrow({ style, onClick }: NextArrowProps) {
   return <Prev onClick={onClick}>{"<"}</Prev>;

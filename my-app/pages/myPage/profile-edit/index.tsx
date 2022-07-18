@@ -11,84 +11,55 @@ import {
 import { checkValidationImage } from "../../../src/components/commons/upload-image/Uploads01.validation";
 
 export const BackGround = styled.div`
-  width: 1200px;
-
-  border: 10px solid #ffc772;
-
-  border-radius: 15px;
-  margin-top: 200px;
-  margin-bottom: 100px;
-`;
-export const Wrapper = styled.div`
-  padding: 100px 0px 0px 0px;
-  height: 800px;
-
-  width: 1200px;
-  border-bottom: 1px solid #e8e7e7;
+  width: 80rem;
+  border-radius: 1rem;
+  padding: 10rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  font-size: 50px;
+  justify-content: center;
 `;
+
 export const Row = styled.div`
   display: flex;
   flex-direction: row;
 `;
-export const ProfileBack = styled.div`
-  margin-left: 200px;
-  height: 300px;
-  width: 300px;
-  background-image: url("/circle.png");
-  background-size: cover;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-export const ProfileImageBox = styled.div`
-  height: 200px;
-  width: 200px;
-  border-radius: 150px;
+
+export const ProfileImage = styled.img`
+  height: 20rem;
+  width: 20rem;
+  border-radius: 50%;
+  object-fit: cover;
 
   cursor: pointer;
 `;
-export const ProfileImage = styled.img`
-  object-fit: cover;
-  height: 200px;
-  width: 200px;
-  border-radius: 150px;
-`;
 export const RightBox = styled.div`
-  margin-top: 100px;
-  width: 600px;
-  height: 100px;
-  margin-left: 100px;
+  margin-left: 10rem;
 `;
 
 export const Name = styled.input`
-  font-size: 40px;
-  width: 350px;
-  padding-left: 20px;
-  border-radius: 15px;
+  font-size: 3rem;
+  width: 25rem;
 `;
 
 export const Email = styled.div`
-  font-size: 30px;
+  font-size: 3rem;
   color: #bdbdbd;
 `;
 
 export const Point = styled.div`
-  font-size: 30px;
+  font-size: 2rem;
   color: #000000;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 `;
 
 export const EditButton = styled.button`
-  background-color: #60d639;
-  width: 300px;
-  height: 100px;
-  font-size: 30px;
-  margin: 0px 10px;
+  background-color: #6600ff;
+  width: 25rem;
+  height: 7rem;
+  font-size: 3rem;
   border-radius: 10px;
   font-weight: 500;
   color: white;
@@ -97,16 +68,14 @@ export const EditButton = styled.button`
 `;
 export const NameErr = styled.div`
   color: red;
-  font-size: 20px;
-  margin-left: 20px;
-  height: 20px;
+  font-size: 2rem;
 `;
 export const ButtonBox = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  margin-top: 150px;
+  margin-top: 4rem;
 `;
 
 const FETCH_USER_LOGGED_IN = gql`
@@ -166,7 +135,6 @@ export default function ProfileEditPage() {
 
   const onChangfile = (event) => {
     const file = checkValidationImage(event.target.files?.[0]);
-    console.log(file);
 
     if (!file) {
       alert("파일이 없습니다.");
@@ -174,7 +142,7 @@ export default function ProfileEditPage() {
     }
     const fileReader = new FileReader();
     fileReader.readAsDataURL(file);
-    // Blob 은 바이러니 라이오브젝트
+
     fileReader.onload = (data) => {
       if (typeof data.target?.result === "string") {
         setImgUrl(data.target?.result);
@@ -201,8 +169,8 @@ export default function ProfileEditPage() {
       imgUrl !==
       `https://storage.googleapis.com/${data?.fetchUserLoggedIn.picture}`;
     if (fileChange) {
-      const result = await uploadFile({ variables: { file } });
-      console.log(result);
+      await uploadFile({ variables: { file } });
+
       myVariables.picture = String(result.data?.uploadFile.url);
     }
     if (data?.fetchUserLoggedIn.name !== name) {
@@ -218,7 +186,7 @@ export default function ProfileEditPage() {
       Modal.info({ content: "프로필이 수정되었습니다." });
       router.push(`/myPage`);
     } catch (error) {
-      console.log(error);
+      alert(error.message);
     }
   };
   useEffect(() => {
@@ -232,54 +200,47 @@ export default function ProfileEditPage() {
   return (
     <>
       <BackGround>
-        <Wrapper>
-          <Row>
-            <ProfileBack>
-              <ProfileImageBox onClick={onClickUpload}>
-                {imgUrl.length ? (
-                  <ProfileImage src={imgUrl} />
-                ) : (
-                  <ProfileImage src={"/noimg.png"} />
-                )}
-              </ProfileImageBox>
-            </ProfileBack>
-            <RightBox>
-              <input
-                style={{ display: "none" }}
-                type="file"
-                onChange={onChangfile}
-                ref={fileRef}
-              />
-              <Name
-                defaultValue={data?.fetchUserLoggedIn.name}
-                onChange={onChangeName}
-              ></Name>
-              <NameErr>{nameErr}</NameErr>
-              <Email>{data?.fetchUserLoggedIn.email}</Email>
-              <Point>
-                POINT :{" "}
-                {data?.fetchUserLoggedIn.userPoint.amount
-                  ? data?.fetchUserLoggedIn.userPoint.amount
-                  : 0}{" "}
-                MP
-              </Point>
-            </RightBox>
-          </Row>
-          <ButtonBox>
-            <EditButton
-              style={{ backgroundColor: "#bcbebc" }}
-              onClick={onClickExit}
-            >
-              취소
-            </EditButton>
-            <EditButton
-              style={{ backgroundColor: "#60d639" }}
-              onClick={onClickEditButton}
-            >
-              수정완료
-            </EditButton>
-          </ButtonBox>
-        </Wrapper>
+        <Row>
+          {imgUrl.length ? (
+            <ProfileImage onClick={onClickUpload} src={imgUrl} />
+          ) : (
+            <ProfileImage
+              onClick={onClickUpload}
+              src={"/defaultProfileImg.png"}
+            />
+          )}
+
+          <RightBox>
+            <input
+              style={{ display: "none" }}
+              type="file"
+              onChange={onChangfile}
+              ref={fileRef}
+            />
+            <Email>{data?.fetchUserLoggedIn.email}</Email>{" "}
+            <Name
+              defaultValue={data?.fetchUserLoggedIn.name}
+              onChange={onChangeName}
+            ></Name>
+            <NameErr>{nameErr}</NameErr>
+            <Point>
+              POINT :{" "}
+              {data?.fetchUserLoggedIn.userPoint.amount
+                ? data?.fetchUserLoggedIn.userPoint.amount
+                : 0}{" "}
+              MP
+            </Point>
+          </RightBox>
+        </Row>
+        <ButtonBox>
+          <EditButton
+            style={{ backgroundColor: "#bcbebc", marginRight: "2rem" }}
+            onClick={onClickExit}
+          >
+            취소
+          </EditButton>
+          <EditButton onClick={onClickEditButton}>수정완료</EditButton>
+        </ButtonBox>
       </BackGround>
     </>
   );

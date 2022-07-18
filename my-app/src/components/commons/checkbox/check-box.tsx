@@ -18,8 +18,8 @@ interface IProps {
   disabled?: boolean;
 }
 const Checked = styled.div`
-  width: 1.333rem;
-  height: 1.333rem;
+  width: 3rem;
+  height: 3rem;
   border-radius: 0.333rem;
   :hover {
     background-color: transparent;
@@ -32,8 +32,8 @@ const Checked = styled.div`
   justify-content: center;
 `;
 const UnChecked = styled.div`
-  width: 1.333rem;
-  height: 1.333rem;
+  width: 3rem;
+  height: 3rem;
   border: 0.066rem solid #7c7c7c;
   border-radius: 0.333rem;
   :hover {
@@ -41,20 +41,20 @@ const UnChecked = styled.div`
   }
 `;
 const Iqon = styled(CheckRoundedIcon)`
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 3rem;
+  height: 3rem;
   margin-bottom: 0.066rem;
   color: white;
 `;
 export default function CheckBoxComponent({
   onClickEvent,
-  checked,
+
   disabled,
 }: {
   onClickEvent?:
     | ((...args: any) => () => void)
     | MouseEventHandler<HTMLButtonElement>;
-  checked: true | false;
+
   disabled?: boolean;
 }) {
   return (
@@ -65,7 +65,7 @@ export default function CheckBoxComponent({
           <Iqon />
         </Checked>
       }
-      checked={checked}
+      defaultChecked={true}
       onClick={onClickEvent}
       disabled={disabled}
     />

@@ -4,13 +4,14 @@ import { useRouter } from "next/router";
 
 export const BackGround = styled.div`
   width: 80rem;
-  border: 1rem solid #6600ff;
+  /* border: 1rem solid #6600ff; */
   border-radius: 1rem;
+  padding: 10rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 20rem;
+
   margin-bottom: 10rem;
 `;
 
@@ -18,14 +19,13 @@ export const Row = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  border: 2px solid black;
 `;
 
 export const ProfileImageBox = styled.div`
   height: 20rem;
   width: 20rem;
   border-radius: 50%;
-  background-image: url("/noimg.png");
+  background-image: url("/.png");
   background-size: cover;
 `;
 export const ProfileImage = styled.img`
@@ -65,13 +65,13 @@ export const GoCharge = styled.button`
   border-radius: 1rem;
 `;
 export const EditButton = styled.button`
-  background-color: #6600ff;
-  height: 4rem;
-  font-size: 2rem;
-  border-radius: 1rem;
-  font-weight: 500;
-  background-image: url();
-  color: white;
+  height: 2.5rem;
+  width: 2.5rem;
+  margin-left: 2rem;
+  background-image: url("/update.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: white;
   border: none;
   cursor: pointer;
 `;
@@ -109,19 +109,18 @@ export default function MyPage() {
           </ProfileImageBox>
 
           <RightBox>
-            <Row style={{ justifyContent: "space-between" }}>
-              {" "}
-              <Name>{data?.fetchUserLoggedIn.name} 님</Name>{" "}
-              <EditButton onClick={onClickEditButton}>프로필수정</EditButton>
-            </Row>
             <Email>{data?.fetchUserLoggedIn.email}</Email>
+            <Row>
+              <Name>{data?.fetchUserLoggedIn.name} 님</Name>{" "}
+              <EditButton onClick={onClickEditButton} />
+            </Row>
             <Point>
-              POINT :{" "}
+              POINT :
               {data?.fetchUserLoggedIn.userPoint.amount
                 ? data?.fetchUserLoggedIn.userPoint.amount
-                : 0}{" "}
+                : 0}
               MP<GoCharge onClick={onClickGoCharge}>충전</GoCharge>
-            </Point>{" "}
+            </Point>
           </RightBox>
         </Row>
       </BackGround>

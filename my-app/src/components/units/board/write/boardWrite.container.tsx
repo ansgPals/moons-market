@@ -98,7 +98,7 @@ export default function NewBoard(props: INewBoardConProps) {
         alert("등록되었습니다.");
         router.push(`/board/${result.data?.createBoard._id}`);
       } catch (error: any) {
-        console.log(error.message);
+        alert(error.message);
       }
     }
   };
@@ -141,8 +141,7 @@ export default function NewBoard(props: INewBoardConProps) {
       alert("수정되었습니다.");
       router.push(`/board/${router.query.id}`);
     } catch (error) {
-      console.log(error);
-      alert(error);
+      alert(error.message);
     }
   };
 

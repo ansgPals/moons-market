@@ -1,6 +1,6 @@
 import * as MY from "./boardComment.styles";
 import { IBoardCommentUIProps } from "./boardComment.types";
-import { Rate } from "antd";
+import { v4 as uuid } from "uuid";
 import BoardCommentListItem from "./list/boardCommentList.container";
 import InfiniteScroll from "react-infinite-scroller";
 
@@ -41,16 +41,18 @@ export default function BoardCommentUI(props: IBoardCommentUIProps) {
           </MY.CommentContents>
         </MY.CommentBox>
         <MY.CommentListBox>
-          <InfiniteScroll
-            pageStart={0}
-            loadMore={props.CommentScrolling}
-            hasMore={true}
-            useWindow={false}
-          >
-            {props.data?.fetchBoardComments.map((el: any) => (
-              <BoardCommentListItem key={el._id} el={el} />
-            ))}
-          </InfiniteScroll>
+          {props.data?.fetchBoardComments && (
+            <InfiniteScroll
+              pageStart={0}
+              loadMore={props.CommentScrolling}
+              hasMore={true}
+              useWindow={false}
+            >
+              {props.data?.fetchBoardComments.map((el: any) => (
+                <BoardCommentListItem key={uuid()} el={el} />
+              ))}
+            </InfiniteScroll>
+          )}
         </MY.CommentListBox>
       </MY.BackGround>
     </div>

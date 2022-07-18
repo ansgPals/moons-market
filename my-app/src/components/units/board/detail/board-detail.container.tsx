@@ -80,7 +80,6 @@ export default function BoardDetailContainer() {
     router.push(`/board/${router.query.id}/edit`);
   };
   useEffect(() => {
-    console.log(data, userData);
     if (data?.fetchBoard?.user?._id === userData?.fetchUserLoggedIn?._id) {
       setWriteUser(true);
     } else {

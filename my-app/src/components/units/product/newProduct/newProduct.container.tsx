@@ -77,7 +77,6 @@ export default function NewProductContainer(props: INewProductContainerProps) {
     setFileUrls(newFileUrls);
   };
   const onChangeContents = (value: string) => {
-    console.log(value);
     setValue("contents", value === "<p><br></p>" ? "" : value);
     trigger("contents");
   };
@@ -104,7 +103,7 @@ export default function NewProductContainer(props: INewProductContainerProps) {
       Modal.info({ content: `상품이 등록되었습니다!` });
       router.push(`/product/${result.data?.createUseditem._id}`);
     } catch (error: any) {
-      alert(error);
+      alert(error.message);
     }
   };
 
@@ -153,7 +152,6 @@ export default function NewProductContainer(props: INewProductContainerProps) {
       Modal.info({ content: `상품이 수정되었습니다!` });
       router.push(`/product/${router.query.productId}`);
     } catch (error) {
-      console.log(editD);
       Modal.error({ content: `${error}` });
     }
   };

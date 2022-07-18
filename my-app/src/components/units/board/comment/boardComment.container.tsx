@@ -63,13 +63,13 @@ export default function BoardCommentContainer() {
         alert("댓글이 등록되었습니다.");
         setWriter(""), setPass(""), setContents("");
       } catch (error: any) {
-        console.log(error.message);
+        alert(error.message);
       }
     }
   };
   const CommentScrolling = () => {
     if (!data) return;
-    console.log(data);
+
     fetchMore({
       variables: {
         page: Math.ceil(data?.fetchBoardComments.length / 10) + 1,

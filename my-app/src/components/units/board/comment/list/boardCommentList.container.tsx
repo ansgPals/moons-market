@@ -55,7 +55,7 @@ export default function BoardCommentListItem(props: ICommentList) {
       alert("댓글이 삭제되었습니다.");
       DeleteModal();
     } catch (error) {
-      alert(error);
+      alert(error.message);
     }
   };
 
@@ -101,7 +101,7 @@ export default function BoardCommentListItem(props: ICommentList) {
       alert("댓글이 수정되었습니다.");
       setIsEdit(false);
     } catch (error) {
-      alert(error);
+      alert(error.message);
     }
   };
   const DeleteModal = () => {

@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   display: flex;
   margin-top: 30px;
   position: sticky;
-  min-width: 800px;
+  min-width: 80rem;
   position: fixed;
   flex-direction: row;
   background-color: white;

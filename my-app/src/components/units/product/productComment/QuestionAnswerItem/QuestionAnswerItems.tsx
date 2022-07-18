@@ -281,7 +281,7 @@ export default function QuestionAnswerItems(props: ICommentListUIProps) {
       setIsEdit(false);
     } catch (error: any) {
       Modal.error({ content: error.message });
-      console.log(error);
+      alert(error.message);
     }
   };
   const onClickOpenDeleteModal = () => {

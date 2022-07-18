@@ -5,7 +5,6 @@ import { IBoardDetailUIProps } from "./board-detail.types";
 import TopButtonPage from "../../../commons/topButton";
 
 export default function BoardDetailUI(props: IBoardDetailUIProps) {
-  console.log(props.writeUser);
   return (
     <S.Wrapper>
       <TopButtonPage />
