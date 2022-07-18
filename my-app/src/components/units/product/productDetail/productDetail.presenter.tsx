@@ -7,7 +7,6 @@ import { v4 as uuid } from "uuid";
 import { getDataDate, getDotMoney } from "../../../../commons/library/utils";
 
 export default function ProductDetailUI(props: IProductDeatilUIProps) {
-  console.log(props.data);
   return (
     <>
       <Modal
