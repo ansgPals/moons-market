@@ -205,7 +205,7 @@ export default function ProductCommentListUIItem(props: ICommentListUIProps) {
                             저장
                           </S.EditButton>
                           <S.DeleteIcon
-                            src="/nono.png/"
+                            src="/delelteImg.png/"
                             onClick={onClickEditClose}
                           />
                         </>
@@ -215,7 +215,7 @@ export default function ProductCommentListUIItem(props: ICommentListUIProps) {
                             수정
                           </S.EditOpenButton>
                           <S.DeleteIcon
-                            src="/nono.png/"
+                            src="/delelteImg.png/"
                             onClick={onClickOpenDeleteModal}
                           />
                         </>
