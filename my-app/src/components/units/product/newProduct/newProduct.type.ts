@@ -5,8 +5,7 @@ import {
   UseFormGetValues,
   UseFormHandleSubmit,
 } from "react-hook-form";
-import { IQuery } from "../../../commons/types/generated/types";
-
+import { IQuery } from "../../../../commons/types/generated/types";
 
 export interface INewProductUIProps {
   Exit: () => void;
@@ -17,7 +16,7 @@ export interface INewProductUIProps {
   formState: FormState<FieldValues>;
   isEdit: boolean;
   fileUrls: string[];
-  data?: Pick<IQuery,'fetchUseditem'>;
+  data?: Pick<IQuery, "fetchUseditem">;
   EditOk: (editD: any) => Promise<void>;
   onChangeContents: (value: string) => void;
   getValues: UseFormGetValues<FieldValues>;
@@ -26,9 +25,9 @@ export interface INewProductUIProps {
   modalOpen: boolean;
   onClickPostNumber: () => void;
   add: string;
-  onKeyUpHash:KeyboardEventHandler<HTMLInputElement>
-  hashArr:string[]
-  onClickTag:(el:string)=>MouseEventHandler<HTMLDivElement>
+  onKeyUpHash: KeyboardEventHandler<HTMLInputElement>;
+  hashArr: string[];
+  onClickTag: (el: string) => MouseEventHandler<HTMLDivElement>;
 }
 
 export interface INewProductContainerProps {

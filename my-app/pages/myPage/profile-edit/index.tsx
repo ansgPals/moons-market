@@ -169,7 +169,7 @@ export default function ProfileEditPage() {
       imgUrl !==
       `https://storage.googleapis.com/${data?.fetchUserLoggedIn.picture}`;
     if (fileChange) {
-      await uploadFile({ variables: { file } });
+      const result = await uploadFile({ variables: { file } });
 
       myVariables.picture = String(result.data?.uploadFile.url);
     }
