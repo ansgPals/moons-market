@@ -25,7 +25,6 @@ export const ProfileImageBox = styled.div`
   height: 20rem;
   width: 20rem;
   border-radius: 50%;
-  background-image: url("/.png");
   background-size: cover;
 `;
 export const ProfileImage = styled.img`
