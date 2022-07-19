@@ -345,7 +345,7 @@ export default function QuestionAnswerItems(props: ICommentListUIProps) {
                     <>
                       <EditButton isActive={formState.isValid}>저장</EditButton>
                       <DeleteIcon
-                        src="/delelteImg.png/"
+                        src="/delete-img.png/"
                         onClick={onClickEditClose}
                       />
                     </>
@@ -355,7 +355,7 @@ export default function QuestionAnswerItems(props: ICommentListUIProps) {
                         수정
                       </EditOpenButton>
                       <DeleteIcon
-                        src="/delelteImg.png/"
+                        src="/delete-img.png/"
                         onClick={onClickOpenDeleteModal}
                       />
                     </>

@@ -54,18 +54,6 @@ export const MainCenterImgBox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  @keyframes fadeInUp {
-    0% {
-      opacity: 0;
-      transform: translate3d(0, 10%, 0);
-    }
-    to {
-      opacity: 1;
-      transform: translateZ(0);
-    }
-  }
-  display: ${(props: IScrollProps) => (props.scrollY > 80 ? "flex" : "none")};
-  ${(props: IScrollProps) => props.scrollY > 80 && { animation: "fadeInUp 1s" }}
 `;
 export const MainCenterImg = styled.div`
   width: 100vw;

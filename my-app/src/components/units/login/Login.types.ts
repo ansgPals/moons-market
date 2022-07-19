@@ -14,4 +14,5 @@ export interface ILoginPagePresenterProps {
   onClickView: () => void;
   onClickLogin: () => Promise<void>;
   inputRef: MutableRefObject<HTMLInputElement>;
+  onClickSignUp: () => void;
 }

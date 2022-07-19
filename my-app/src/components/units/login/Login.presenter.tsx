@@ -41,7 +41,7 @@ export default function LoginPagePresenter(props: ILoginPagePresenterProps) {
       >
         or
       </S.Text>
-      <S.GoSignup href="/sign-up">
+      <S.GoSignup onClick={props.onClickSignUp}>
         <S.Text style={{ color: "black" }}>신규</S.Text>
         <S.Text
           style={{

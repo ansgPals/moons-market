@@ -11,7 +11,6 @@ const ReactSlick = styled(Slider)`
   height: 51rem;
   min-width: 80rem;
   margin-top: 2rem;
-  margin-bottom: 10rem;
 `;
 
 interface IBackProps {
@@ -34,14 +33,11 @@ const SlickWrapper = styled.div`
   align-items: center;
   justify-content: center;
 `;
-const ProductImage = styled.div`
-  background-image: ${(props: IBackProps) =>
-    `url(https://storage.googleapis.com/${props.backImage})`};
+const ProductImage = styled.img`
   background-color: white;
   width: 40rem;
   height: 40rem;
-  background-size: cover;
-  background-repeat: no-repeat;
+  object-fit: cover;
 `;
 const Title = styled.div`
   margin-top: 10rem;
@@ -103,7 +99,9 @@ export default function WaitingCardSlider({
         {data?.fetchUseditemsOfTheBest?.map((el, i) => (
           <div key={i}>
             <SlickWrapper>
-              <ProductImage backImage={el?.images?.[0]}></ProductImage>
+              <ProductImage
+                src={`https://storage.googleapis.com/${el?.images?.[0]}`}
+              />
               <DetailBox>
                 <div>
                   <Title>{el?.name}</Title>

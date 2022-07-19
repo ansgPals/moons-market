@@ -13,8 +13,7 @@ const TopButton = styled.button`
   justify-content: center;
   position: fixed;
   z-index: 12;
-  /* right: 360px; */
-  bottom: 10%;
+  top: 28%;
   border: none;
   background: #ffffff;
   box-shadow: 0px 5px 35px rgba(23, 0, 58, 0.12);

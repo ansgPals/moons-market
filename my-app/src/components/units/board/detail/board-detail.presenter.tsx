@@ -3,7 +3,7 @@ import BackButtonComponent from "../../../commons/backButton/backButton";
 import { getTimeForTodayDate } from "../../../../commons/library/utils";
 import { IBoardDetailUIProps } from "./board-detail.types";
 import TopButtonPage from "../../../commons/topButton";
-
+import { v4 as uuid } from "uuid";
 export default function BoardDetailUI(props: IBoardDetailUIProps) {
   return (
     <S.Wrapper>
@@ -36,13 +36,16 @@ export default function BoardDetailUI(props: IBoardDetailUIProps) {
             {getTimeForTodayDate(props.data?.fetchBoard?.createdAt)}
           </S.UserId>
         </S.WriterInfo>
-        <S.MainImg
-          src={
-            props.data?.fetchBoard?.images[0]
-              ? `https://storage.googleapis.com/${props.data?.fetchBoard?.images[0]}`
-              : "/defaultProfileImg.png"
-          }
-        ></S.MainImg>
+        {props.data?.fetchBoard?.images[0] &&
+          props.data?.fetchBoard?.images.map(
+            (el) =>
+              el.length && (
+                <S.MainImg
+                  key={uuid()}
+                  src={`https://storage.googleapis.com/${el}`}
+                />
+              )
+          )}
         <S.Contents>{props.data?.fetchBoard?.contents}</S.Contents>
 
         <S.PositionRow

@@ -2,15 +2,19 @@ import * as S from "../productList/productList.styles";
 import InfiniteScroll from "react-infinite-scroller";
 import { IProductListUI } from "./productList.types";
 import { v4 as uuid } from "uuid";
-import DOMPurify from "dompurify";
+
 import {
   getDotMoney,
   getTimeForTodayDate,
 } from "../../../../commons/library/utils";
+import WriteButtonPage from "../../../commons/write-button";
+import TopButtonPage from "../../../commons/topButton";
 
 export default function ProductListUI(props: IProductListUI) {
   return (
     <div>
+      <WriteButtonPage title="product" />
+      <TopButtonPage />
       <S.BackGround>
         <InfiniteScroll
           pageStart={0}

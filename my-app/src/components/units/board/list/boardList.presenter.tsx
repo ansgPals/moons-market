@@ -4,10 +4,12 @@ import * as S from "./boardList.styles";
 import BoardListItem from "../list-item/board-list-item.container";
 import InfiniteScroll from "react-infinite-scroller";
 import TopButtonPage from "../../../commons/topButton";
+import WriteButtonPage from "../../../commons/write-button";
 
 export default function BoardListUI(props: IBoardListUIProps) {
   return (
     <S.Wrapper>
+      <WriteButtonPage title={"board"} />
       <TopButtonPage />
       <S.Title>It{"'"}S STYLE BOARD!!</S.Title>
       <S.SearchBox>

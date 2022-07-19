@@ -15,7 +15,6 @@ export default function MoonsMarketMainPage() {
   const onClickGoStyle = () => {
     router.push("/board");
   };
-  const { scrollY } = useScroll();
 
   return (
     <S.Wrapper>
@@ -36,13 +35,12 @@ export default function MoonsMarketMainPage() {
         <S.SubTitle
           style={{
             width: "120rem",
-            marginTop: "10rem",
             marginBottom: "2rem",
           }}
         >
           BLOG WITH STYLE BOARD
         </S.SubTitle>
-        <S.MainCenterImgBox scrollY={scrollY}>
+        <S.MainCenterImgBox>
           <S.MainCenterImg>
             <S.HoverBox onClick={onClickGoStyle}>
               <S.GoCommunity>지금 마켓러 스타일보드 보러가기!</S.GoCommunity>

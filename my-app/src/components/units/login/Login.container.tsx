@@ -43,7 +43,7 @@ export default function LogInContainer() {
   const [idErr, setIdErr] = useState("");
   const [passErr, setPassErr] = useState("");
   const [focusId, setFocusId] = useState(false);
-
+  const router = useRouter();
   const [loginUser] = useMutation<
     Pick<IMutation, "loginUser">,
     IMutationLoginUserArgs
@@ -102,7 +102,9 @@ export default function LogInContainer() {
       else setIdErr(e.message);
     }
   };
-
+  const onClickSignUp = () => {
+    router.push("/sign-up");
+  };
   useEffect(() => {
     inputRef.current?.focus();
   }, []);
@@ -122,6 +124,7 @@ export default function LogInContainer() {
       onClickView={onClickView}
       onClickLogin={onClickLogin}
       inputRef={inputRef}
+      onClickSignUp={onClickSignUp}
     />
   );
 }
