@@ -9,17 +9,17 @@ export default function BoardDetailUI(props: IBoardDetailUIProps) {
     <S.Wrapper>
       <TopButtonPage />
       <BackButtonComponent />
-      {props.writeUser && (
-        <S.PositionRow style={{ marginBottom: "2rem" }}>
-          <S.WriterButton
-            onClick={props.OnClickEdit}
-            style={{ marginRight: "1rem" }}
-          >
-            수정
-          </S.WriterButton>
-          <S.WriterButton onClick={props.OnClickDelete}>삭제</S.WriterButton>
-        </S.PositionRow>
-      )}
+
+      <S.PositionRow style={{ marginBottom: "2rem" }}>
+        <S.WriterButton
+          onClick={props.OnClickEdit}
+          style={{ marginRight: "1rem" }}
+        >
+          수정
+        </S.WriterButton>
+        <S.WriterButton onClick={props.OnClickDelete}>삭제</S.WriterButton>
+      </S.PositionRow>
+
       <S.BackGround>
         <S.WriterInfo>
           <S.PositionRow>

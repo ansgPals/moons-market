@@ -53,14 +53,14 @@ export const Writer = styled.div`
 export const Contents = styled.div`
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
-  width: 59rem;
+  width: 55rem;
 `;
 export const ContentsEdit = styled.input`
   border: 1px solid #bdbdbd;
-  width: 55rem;
+  width: 50rem;
 `;
 export const Row = styled.div`
-  width: 55rem;
+  width: 50rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -70,6 +70,7 @@ export const OptionWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: end;
+  margin-right: 2rem;
 `;
 export const UpdateIcon = styled.img`
   width: 2.5rem;
@@ -83,7 +84,7 @@ export const DeleteIcon = styled.img`
 `;
 export const InputErr = styled.div`
   padding: 0px 2rem;
-  width: 60rem;
+  width: 40rem;
   height: 2rem;
   min-height: 2rem;
   align-items: center;
@@ -344,20 +345,16 @@ export default function QuestionAnswerItems(props: ICommentListUIProps) {
                   {isEdit ? (
                     <>
                       <EditButton isActive={formState.isValid}>저장</EditButton>
-                      <DeleteIcon
-                        src="/delete-img.png/"
-                        onClick={onClickEditClose}
-                      />
+                      <EditButton onClick={onClickEditClose}>취소</EditButton>
                     </>
                   ) : (
                     <>
                       <EditOpenButton onClick={onClickUpdate}>
                         수정
                       </EditOpenButton>
-                      <DeleteIcon
-                        src="/delete-img.png/"
-                        onClick={onClickOpenDeleteModal}
-                      />
+                      <EditOpenButton onClick={onClickOpenDeleteModal}>
+                        삭제
+                      </EditOpenButton>
                     </>
                   )}
                 </>

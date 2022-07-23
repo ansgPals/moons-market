@@ -40,7 +40,7 @@ export const Contents = styled.div`
 `;
 export const ContentsEdit = styled.input`
   border: 1px solid #bdbdbd;
-  width: 39vw;
+  width: 55rem;
 `;
 export const Row = styled.div`
   width: 74rem;
@@ -54,7 +54,7 @@ export const OptionWrapper = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: end;
-  width: 10rem;
+  width: 13rem;
   height: 3rem;
 `;
 export const UpdateIcon = styled.img`
@@ -93,7 +93,7 @@ export const EditOpenButton = styled.button`
   font-size: 1.5rem;
 
   color: gray;
-  margin-right: 1rem;
+  margin-right: 0.5rem;
   background-color: white;
 `;
 interface IPropsInBox {

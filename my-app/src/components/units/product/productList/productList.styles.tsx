@@ -75,6 +75,9 @@ interface IProps {
 }
 export const SearchWord = styled.span`
   font-size: 2rem;
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+  margin-bottom: 1rem;
   color: ${(props: IProps) => (props.isMatched ? "#f542b0" : "black")};
 `;
 export const MyCardContent = styled.div`
@@ -91,7 +94,9 @@ export const CardImage = styled.img`
 
 export const ProductName = styled.div`
   font-size: 2.5rem;
-  color: #bdbdbd;
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+  margin-bottom: 1rem;
   width: 20rem;
   overflow: hidden;
   text-overflow: ellipsis;

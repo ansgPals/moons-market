@@ -204,20 +204,21 @@ export default function ProductCommentListUIItem(props: ICommentListUIProps) {
                           <S.EditButton isActive={formState.isValid}>
                             저장
                           </S.EditButton>
-                          <S.DeleteIcon
-                            src="/delete-img.png/"
-                            onClick={onClickEditClose}
-                          />
+                          <S.EditButton onClick={onClickEditClose}>
+                            취소
+                          </S.EditButton>
                         </>
                       ) : (
                         <>
                           <S.EditOpenButton onClick={onClickUpdate}>
                             수정
                           </S.EditOpenButton>
-                          <S.DeleteIcon
-                            src="/delete-img.png/"
+                          <S.EditOpenButton
+                            style={{ marginRight: "0rem" }}
                             onClick={onClickOpenDeleteModal}
-                          />
+                          >
+                            삭제
+                          </S.EditOpenButton>
                         </>
                       )}
                     </>

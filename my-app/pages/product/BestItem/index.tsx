@@ -1,14 +1,8 @@
 import { gql, useQuery } from "@apollo/client";
 import styled from "@emotion/styled";
 import { useRouter } from "next/router";
-
-import CardContent from "@mui/material/CardContent";
-import CardActions from "@mui/material/CardActions";
-import Card from "@mui/material/Card";
-import Typography from "@mui/material/Typography";
 import { useRecoilState } from "recoil";
 import { todayProductState } from "../../../src/commons/store";
-import DOMPurify from "dompurify";
 import { IQuery } from "../../../src/commons/types/generated/types";
 import {
   getDotMoney,
@@ -74,17 +68,31 @@ export const CardImage = styled.img`
 `;
 
 export const ProductName = styled.div`
-  font-size: 2rem;
+  font-size: 2.5rem;
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+  margin-bottom: 1rem;
   width: 20rem;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 `;
 export const ProductInfo = styled.div`
-  height: 8rem;
-  font-size: 2rem;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 20rem;
+`;
+export const Remark = styled.div`
+  font-size: 1.5rem;
+  width: 20rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 export const MyCardContent = styled.div`
+  width: 23rem;
   padding: 2rem;
 `;
 
@@ -95,6 +103,7 @@ export const BestTitle = styled.div`
   font-family: "SUIT600";
   width: 80rem;
 `;
+
 export const CardButton = styled.div`
   display: flex;
   flex-direction: row;
@@ -162,7 +171,10 @@ export default function BestProductPage() {
                 )}
                 <MyCardContent>
                   <ProductName>{el.name}</ProductName>
-                  <ProductInfo>가격 : {getDotMoney(el.price)} 원</ProductInfo>
+                  <ProductInfo>
+                    <Remark>{el.remarks}</Remark>
+                    가격 : {getDotMoney(el.price)} 원
+                  </ProductInfo>{" "}
                 </MyCardContent>
                 <CardButton>
                   <PositionRow>

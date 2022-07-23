@@ -20,18 +20,7 @@ export const FETCH_BOARD = gql`
     }
   }
 `;
-export const FETCH_USER_LOGGED_IN = gql`
-  query fetchUserLoggedIn {
-    fetchUserLoggedIn {
-      email
-      name
-      _id
-      userPoint {
-        amount
-      }
-    }
-  }
-`;
+
 export const DELETE_BOARD = gql`
   mutation deleteBoard($boardId: ID!) {
     deleteBoard(boardId: $boardId)

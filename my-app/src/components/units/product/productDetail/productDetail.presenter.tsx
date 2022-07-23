@@ -122,8 +122,9 @@ export default function ProductDetailUI(props: IProductDeatilUIProps) {
           <S.ImageBox>
             {props.data?.fetchUseditem.images
               ?.filter((aa: any) => aa)
-              .map((aa: any, idx) => (
+              .map((aa: any) => (
                 <S.IMG
+                  style={{ marginBottom: "1.5rem" }}
                   key={uuid()}
                   src={`https://storage.googleapis.com/${aa}`}
                 />

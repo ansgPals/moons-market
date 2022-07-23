@@ -56,9 +56,7 @@ export default function ProductListUI(props: IProductListUI) {
                           </S.SearchWord>
                         ))}
                     </S.ProductName>
-
                     <S.ProductInfo>
-                      {" "}
                       <S.Remark>{el.remarks}</S.Remark>
                       {getDotMoney(el.price)} 원
                     </S.ProductInfo>
