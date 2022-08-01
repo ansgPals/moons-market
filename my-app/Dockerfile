@@ -1,10 +1,7 @@
 FROM node:16
-
-WORKDIR /my_app/
-COPY ./package.json /my_app/
-COPY ./yarn.lock /my_app/
-RUN yarn install
-
 COPY . /my_app/
-RUN yarn build:ssg
+WORKDIR /my_app/
+
+RUN yarn install
+RUN yarn build:ssr
 CMD yarn start
