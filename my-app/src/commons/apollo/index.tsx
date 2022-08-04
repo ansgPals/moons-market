@@ -16,6 +16,8 @@ import {
 } from "../store";
 import { getAccessToken } from "../library/getAccessToken";
 
+const APOLLO_CACHE = new InMemoryCache();
+
 export default function ApolloSetting(props: any) {
   const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
   const [, setUserInfo] = useRecoilState(userInfoState);
@@ -61,7 +63,7 @@ export default function ApolloSetting(props: any) {
   });
   const client = new ApolloClient({
     link: ApolloLink.from([errorLink, uploardLink]),
-    cache: new InMemoryCache(),
+    cache: APOLLO_CACHE,
   });
   return (
     <>
