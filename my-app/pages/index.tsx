@@ -1,12 +1,11 @@
-import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import { useScroll } from "../src/commons/library/scrollHook";
 import { IQuery } from "../src/commons/types/generated/types";
 import MainCarousel from "../src/components/commons/carousel-main";
 import TopButtonPage from "../src/components/commons/topButton";
 import { FETCH_USED_ITEM_OF_THE_BEST } from "../src/components/units/main/main-page.query";
 import * as S from "../src/components/units/main/main-page.style";
-
+import Head from "next/head";
 export default function MoonsMarketMainPage() {
   const { data } = useQuery<Pick<IQuery, "fetchUseditemsOfTheBest">>(
     FETCH_USED_ITEM_OF_THE_BEST
@@ -18,6 +17,13 @@ export default function MoonsMarketMainPage() {
 
   return (
     <S.Wrapper>
+      <Head>
+        <meta property="og:title" content={"MOONSMARKET"} />
+        <meta
+          property="og:description"
+          content={"새로운바람을 담은 리셀페이지"}
+        />
+      </Head>
       <TopButtonPage />
       <S.MainTitleBox>
         <S.Title>리셀의 문을 열다</S.Title>
