@@ -8,17 +8,26 @@ import { RecoilRoot } from "recoil";
 import { globalStyles } from "../styles/globalStyles";
 import { Global } from "@emotion/react";
 import ApolloSetting from "../src/commons/apollo";
-
+import Head from "next/head";
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <RecoilRoot>
-      <ApolloSetting>
-        <Global styles={globalStyles} />
-        <LayOut>
-          <Component {...pageProps} />
-        </LayOut>
-      </ApolloSetting>
-    </RecoilRoot>
+    <>
+      <Head>
+        <meta property="og:title" content={"MOONSMARKET"} />
+        <meta
+          property="og:description"
+          content={"새로운바람을 담은 리셀페이지"}
+        />
+      </Head>
+      <RecoilRoot>
+        <ApolloSetting>
+          <Global styles={globalStyles} />
+          <LayOut>
+            <Component {...pageProps} />
+          </LayOut>
+        </ApolloSetting>
+      </RecoilRoot>
+    </>
   );
 }
 
