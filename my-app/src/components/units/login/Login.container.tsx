@@ -102,6 +102,8 @@ export default function LogInContainer() {
       else setIdErr(e.message);
     }
   };
+  console.log(router);
+
   const onClickSignUp = () => {
     router.push("/sign-up");
   };

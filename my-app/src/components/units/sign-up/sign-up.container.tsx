@@ -84,6 +84,7 @@ export default function SignUpContainer() {
       setPasswordOkErr("입력하신 비밀번호가 다릅니다.");
     }
   }, [passwordOk, watchFields.password]);
+
   return (
     <SignUpPresenter
       onClickSignUp={onClickSignUp}
