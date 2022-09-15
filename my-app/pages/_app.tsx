@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <meta property="og:title" content={"MOONSMARKET"} />
+        <meta property="og:title" content={"MOONSMARKET!"} />
         <meta
           property="og:description"
           content={"새로운바람을 담은 리셀페이지"}
