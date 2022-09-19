@@ -11,7 +11,7 @@ export default function BoardListUI(props: IBoardListUIProps) {
     <S.Wrapper>
       <WriteButtonPage title={"board"} />
       <TopButtonPage />
-      <S.Title>It{"'"}S STYLE BOARD!!!</S.Title>
+      <S.Title>It{"'"}S STYLE BOARD!!</S.Title>
       <S.SearchBox>
         <S.SearchInput onChange={props.onChangeSearch}></S.SearchInput>
         <S.SearchInputIcon></S.SearchInputIcon>
